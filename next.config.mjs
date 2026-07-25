@@ -1,11 +1,31 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   trailingSlash: true,
-  images: {
-    remotePatterns: [
-      new URL("https://kurino096.shop/**"),
-      new URL("https://images.microcms-assets.io/**")
-    ],
+  
+  vite: {
+    css: {
+      modules: {
+        localsConvention: 'camelCaseOnly',
+      },
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @use "@/scss/mixin" as *;
+            @use "@/scss/variable" as *;
+            @use "@/scss/typography" as *;
+            @use "@/scss/hover" as *;
+            @use "@/scss/link" as *;
+            @use "@/scss/icons" as *;
+          `,
+        },
+      },
+    },
+    resolve: {
+      alias: {
+        '@/': `${resolve(__dirname, 'src')}/`,
+      },
+    },
   },
 };
 

@@ -1,0 +1,11 @@
+@use './mixin' as *;
+
+@mixin link-underline {
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
+  text-decoration-thickness: max(1px, 0.1em);
+  font-weight: 600;
+  @include hover {
+    text-decoration: none;
+  }
+}

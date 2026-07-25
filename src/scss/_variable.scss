@@ -1,0 +1,20 @@
+$breakpoints: (
+  'xsm': '(width < max(375px, 375 / 16 * 1rem))',
+  'sm': '(width < max(576px, 576 / 16 * 1rem))',
+  'md': '(width < max(768px, 768 / 16 * 1rem))',
+  'lg': '(width < max(992px, 992 / 16 *  1rem))',
+  'xl': '(width < max(1200px, 1200 / 16 * 1rem))',
+  'xxl': '(width < max(1400px, 1400 / 16 * 1rem))',
+) !default;
+
+$screen: (
+  'xsm': 375,
+  'sm': 576,
+  'md': 768,
+  'lg': 992,
+  'xl': 1200,
+  'xxl': 1400,
+  'canvas': 1920,
+) !default;
+
+$base-font-size: 16;
