@@ -16,6 +16,8 @@ export default function Home() {
       <CaseSection />
       <FeatureSection />
       <StorySection />
+
+      
       <NewsSection />
       <NewsSectionMicroCMS />
     </>
