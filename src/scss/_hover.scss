@@ -3,6 +3,6 @@
 @mixin hover-fade {
   transition: opacity var(--hover-fade-duration) var(--hover-circle-arrow-easing);
   @include hover {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 }

@@ -1,22 +1,15 @@
-import { M_PLUS_1, Montserrat } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import CtaSection from "@/components/layout/CtaSection";
+import { Noto_Serif } from "next/font/google";
+import "@/scss/uaplus.scss";
+import "@/scss/global.scss";
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 import type { Metadata } from "next";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
-const mplus1p = M_PLUS_1({
-  weight: ["400", "500", "700", "800"],
-  variable: "--font-m-plus-1p",
-  subsets: ["latin"],
-});
-
-const montserrat = Montserrat({
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-montserrat",
-  subsets: ["latin"],
+const notoSerif = Noto_Serif({
+  weight: ["400", "500", "700"],
+  variable: "--font-noto-serif",
 });
 
 export const metadata: Metadata = {
@@ -45,10 +38,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <body className={`${mplus1p.variable} ${montserrat.variable}`}>
+      <body className={`${notoSerif.variable}`}>
         <Header />
         {children}
-        <CtaSection />
         <Footer />
       </body>
     </html>

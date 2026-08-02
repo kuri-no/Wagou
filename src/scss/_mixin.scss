@@ -3,19 +3,18 @@
 @use 'sass:map';
 @use 'sass:math';
 
-@function line($size, $height) {
-  $lh: math.div($height, $size);
-  $lh: math.floor($lh * 100);
-
-  @return math.div($lh, 100);
-}
-
+/* ******************************************************
+breakpoints
+****************************************************** */
 @mixin mq($breakpoint: md) {
   @media #{map.get($breakpoints, $breakpoint)} {
     @content;
   }
 }
 
+/* ******************************************************
+hover
+****************************************************** */
 @mixin hover() {
   @media (any-hover: hover) {
     &:hover {
@@ -28,55 +27,23 @@
   }
 }
 
-@function clamp-rem($min, $max: null, $max-vp: 1920, $min-vp: 375) {
-  // $is-negative: $max < 0;
-  // $max-val: if($is-negative, if($min != null, $min, $max * 0.6667), $max);
-  // $min-val: if($min != null, $min, $max * 0.6667);
-
-  $max-val: null;
-  $min-val: $min;
-
-  @if $max != null {
-    $max-val: $max;
-  } @else {
-    $max-val: $min * 1.6667;
-  }
-
-  // @if $is-negative {
-  //   $temp: $max-val;
-  //   $max-val: $min-val;
-  //   $min-val: $temp;
-  // }
-
-  $abs-max: math.abs($max-val);
-  $abs-min: math.abs($min-val);
-  $viewport-diff: $max-vp - $min-vp;
-  $variable-part: 0;
-
-  @if $viewport-diff != 0 {
-    $variable-part: math.div(($abs-max - $abs-min), $viewport-diff);
-  }
-
-  $viewport-effect: $max-vp * $variable-part;
-  $constant-base: $abs-max - $viewport-effect;
-  $constant: math.div($constant-base, $base-font-size);
-
-  // $constant: if($is-negative, -$constant, $constant);
-  $min-rem: math.div($min-val, $base-font-size);
-  $max-rem: math.div($max-val, $base-font-size);
-  $variable-percent: $variable-part * 100;
-
-  @return clamp(
-    #{$min-rem} * var(--rem),
-    #{$variable-percent}vw + #{$constant} * var(--rem),
-    #{$max-rem} * var(--rem)
-  );
+/* ******************************************************
+Convert to Rem
+****************************************************** */
+@function rem($size) {
+  @return math.div($size, 10) + rem;
 }
 
-@function px-rem($size) {
-  @return calc((($size / $base-font-size)) * var(--rem));
+/* ******************************************************
+Liquid
+****************************************************** */
+@function vwcalc($size, $wrapper: 1140) {
+  @return calc($size / $wrapper * 100vw);
 }
 
+/* ******************************************************
+icon
+****************************************************** */
 @mixin icon($icon-name) {
   $icon: map.get($icons, $icon-name);
 

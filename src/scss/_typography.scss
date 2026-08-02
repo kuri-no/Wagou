@@ -1,7 +1,7 @@
 @use './mixin' as *;
 
 @mixin heading1 {
-  font-size: var(--fz-heading1);
+  font-size: 48px;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.02em;
@@ -12,7 +12,7 @@
 }
 
 @mixin heading2 {
-  font-size: var(--fz-heading2);
+  font-size: 36px;
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.5;
@@ -23,7 +23,7 @@
 }
 
 @mixin heading3 {
-  font-size: var(--fz-heading3);
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.5;
@@ -34,7 +34,7 @@
 }
 
 @mixin heading4 {
-  font-size: var(--fz-heading4);
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.5;
@@ -45,7 +45,7 @@
 }
 
 @mixin heading5 {
-  font-size: var(--fz-heading5);
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.5;
@@ -53,40 +53,4 @@
     line-height: 1.4;
     letter-spacing: 0.01em;
   }
-}
-
-@mixin heading6 {
-  font-size: var(--fz-heading6);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.5;
-  @include mq {
-    line-height: 1.4;
-    letter-spacing: 0.01em;
-  }
-}
-
-@mixin text-lead {
-  font-size: var(--fz-lead);
-  line-height: var(--lh-sm);
-  font-weight: 600;
-}
-
-@mixin text-small {
-  font-size: var(--fz-sm);
-  line-height: var(--lh-sm);
-}
-
-@mixin text-caption {
-  font-size: var(--fz-caption);
-  line-height: var(--lh-sm);
-}
-
-@mixin text-date {
-  font-family: var(--ff-mulish);
-  color: #646973;
-  font-size: clamp-rem(14, 16);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  line-height: 1.5;
 }
