@@ -7,10 +7,10 @@ Next.jsで制作されているコーポーレートサイトです。
 
 - Next.js
 - TypeScript
+- CSS Modules(SCSS)
 - GSAP
-- SCSS
 - microCMS
-・Vercel
+- Vercel
 
 ## セットアップ
 

@@ -1,0 +1,17 @@
+
+.icon {
+  position: relative;
+  width: 200px;
+  aspect-ratio: 1;
+  background-color: blue;
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    translate: 0 100%;
+    font-size: rem(36);
+    color: var(--color-accent);
+    content: "てすと";
+  }
+}
