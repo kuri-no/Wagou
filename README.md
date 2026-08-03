@@ -9,6 +9,7 @@ Next.jsで制作されているコーポーレートサイトです。
 - TypeScript
 - CSS Modules(SCSS)
 - GSAP
+- SSGForm
 - microCMS
 - Vercel
 
