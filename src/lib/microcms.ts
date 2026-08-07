@@ -1,8 +1,8 @@
 import { createClient, type MicroCMSQueries } from 'microcms-js-sdk';
 
 export const client = createClient({
-  serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: import.meta.env.MICROCMS_API_KEY,
+  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN ?? '',
+  apiKey: process.env.MICROCMS_API_KEY ?? '',
 });
 
 export const getPostDetail = async <T>(

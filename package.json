@@ -30,7 +30,7 @@
     "sass": "^1.97.0",
     "svgo": "^4.0.0",
     "typed-scss-modules": "^8.1.1",
-    "typescript": "7.0.2"
+    "typescript": "5.9.3"
   },
   "volta": {
     "node": "24.12.0"
