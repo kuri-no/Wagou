@@ -1,16 +1,25 @@
+import Image from "next/image";
+import styles from "./Heading.module.scss";
+import iconHeading from '@/assets/common/icon-heading.png';
+
 export type HeadingProps = {
-  subText: string;
-  mainText: string;
+  label: string;
 };
 
 export default function Heading({
-  subText,
-  mainText,
+  label,
 }: HeadingProps) {
   return (
-    <div className="heading">
-      <p className="sub">{subText}</p>
-      <h2 className="main">{mainText}</h2>
+    <div className={styles.heading}>
+      <div className={styles.icon}>
+        <Image
+          src={iconHeading}
+          alt=""
+          width={100}
+          height={38}
+        />
+      </div>
+      <h2 className={styles.label}>{label}</h2>
     </div>
   );
 }

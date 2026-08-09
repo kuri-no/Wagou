@@ -1,4 +1,4 @@
-import "@/scss/uaplus.scss";
+import "@/scss/reset.scss";
 import "@/scss/global.scss";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
