@@ -3,6 +3,10 @@
 const nextConfig = {
   trailingSlash: true,
 
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+
   sassOptions: {
     additionalData: `
       @use "@/scss/mixin" as *;
