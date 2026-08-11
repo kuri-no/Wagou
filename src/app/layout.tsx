@@ -1,7 +1,7 @@
-import "@/scss/reset.scss";
-import "@/scss/global.scss";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import '@/scss/reset.scss';
+import '@/scss/global.scss';
+import Footer from '@/components/footer/Footer';
+import Header from '@/components/header/Header';
 
 // const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
