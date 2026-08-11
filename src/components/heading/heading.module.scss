@@ -2,21 +2,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: rem(40);
+  row-gap: min(vwcalc(40), rem(40));
   width: fit-content;
-}
-
-.icon {
-  width: rem(100);
-  height: rem(38);
-  img {
-    width: 100%;
+  margin-inline: auto;
+  @include mq {
+    row-gap: rem(16);
   }
-}
-
-.label {
-  font-size: rem(26);
-  line-height: 1;
-  letter-spacing: 0.12em;
-  font-weight: 700;
+  .icon {
+    width: min(vwcalc(100), rem(100));
+    height: min(vwcalc(38), rem(38));
+    @include mq {
+      width: rem(70);
+      height: rem(26);
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .label {
+    @include heading1;
+  }
 }
