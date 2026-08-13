@@ -1,16 +1,17 @@
-@use "@/scss/mixin" as *;
+@use '@/scss/mixin' as *;
 
 :root {
-  --font-base: "Noto Serif JP", serif;
+  --font-base: 'Noto Serif JP', serif;
+  --font-notosan: 'Noto Sans JP', sans-serif;
   --color-base: #333;
-  --color-base-bg: #F9F6F1;
+  --color-base-bg: #f9f6f1;
   --color-primary: #047836;
-  --color-accent: #8B1C1A;
+  --color-accent: #8b1c1a;
   --header-height: #{rem(140)};
   --lh-base: 1.56;
   --round-base: #{rem(10)};
   --round-button: #{rem(1)} #{rem(20)} #{rem(1)} #{rem(20)};
-  --box-shadow-base: 0 #{rem(4)} #{rem(24)} 0 rgb(169 169 169 / .25);
+  --box-shadow-base: 0 #{rem(4)} #{rem(24)} 0 rgb(169 169 169 / 0.25);
   --hover-base-duration: 0.4s;
   --hover-base-easing: cubic-bezier(0.33, 1, 0.68, 1);
   --z-index-header: 1000;
@@ -24,7 +25,7 @@ html {
   font-size: 10px;
   scroll-behavior: auto;
   @include mq() {
-    font-size: calc(100vw / 37.5);
+    font-size: calc(100vw / 44);
   }
 }
 
@@ -79,7 +80,7 @@ a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  &[href^="tel:"] {
+  &[href^='tel:'] {
     @include mq(lg) {
       pointer-events: none;
     }
@@ -99,4 +100,3 @@ a {
     display: block;
   }
 }
-
