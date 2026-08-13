@@ -1,10 +1,10 @@
 import Button from '@/components/button/Button';
 import Heading from '@/components/heading/Heading';
-import Inner from '@/components/inner/Inner';
+import Content from '@/components/layout/Content';
 
 export default function Home() {
   return (
-    <Inner>
+    <Content>
       <div className="test" style={{ height: '200px' }}></div>
 
       <Heading label="日々のこと" />
@@ -24,6 +24,6 @@ export default function Home() {
       />
 
       <div id="anc_2" className="test" style={{ height: '200px' }}></div>
-    </Inner>
+    </Content>
   );
 }

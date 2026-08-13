@@ -3,7 +3,7 @@ import '@/scss/global.scss';
 import SiteEffects from '@/app/_components/SiteEffects';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
-import Main from '@/components/main/Main';
+import Main from '@/components/layout/Main';
 
 export default function RootLayout({ children }) {
   return (
