@@ -1,10 +1,9 @@
 import '@/scss/reset.scss';
 import '@/scss/global.scss';
+import SiteEffects from '@/app/_components/SiteEffects';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Main from '@/components/main/Main';
-
-// const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
 export default function RootLayout({ children }) {
   return (
@@ -13,6 +12,7 @@ export default function RootLayout({ children }) {
         <Header />
         <Main>{children}</Main>
         <Footer />
+        <SiteEffects />
       </body>
     </html>
   );

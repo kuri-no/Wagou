@@ -6,16 +6,24 @@ export default function Nav() {
     <nav id="menu" className={styles.nav}>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <Link href="/about/">和合について</Link>
+          <Link href="/about/" className={styles.link}>
+            和合について
+          </Link>
         </li>
         <li className={styles.item}>
-          <Link href="#anc_1">おしながき</Link>
+          <Link href="/#anc_1" className={styles.link}>
+            おしながき
+          </Link>
         </li>
         <li className={styles.item}>
-          <Link href="/news/">日々のこと</Link>
+          <Link href="/news/" className={styles.link}>
+            日々のこと
+          </Link>
         </li>
         <li className={styles.item}>
-          <Link href="#anc_2">アクセス</Link>
+          <Link href="/#anc_2" className={styles.link}>
+            アクセス
+          </Link>
         </li>
       </ul>
     </nav>

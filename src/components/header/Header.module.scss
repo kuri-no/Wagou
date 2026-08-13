@@ -6,6 +6,12 @@
   @include mq {
     --header-height: #{rem(80)};
   }
+  &.menuOpen {
+    .body {
+      translate: 0;
+      pointer-events: auto;
+    }
+  }
   .inner {
     display: flex;
     justify-content: flex-end;
@@ -25,34 +31,22 @@
     }
     .link {
       display: block;
+      @include hover-fade;
     }
   }
   .body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
     position: absolute;
     top: 0;
     right: 0;
-    width: 100%;
-    max-width: min(vwcalc(370), rem(370));
+    translate: 120% 0;
+    width: min(vwcalc(370), rem(370));
     height: 100dvh;
-    padding: rem(108) rem(46) rem(34);
-    overflow: scroll;
-    // background-image: url(../../assets/common/bg.png);
-    // background-repeat: no-repeat;
-    // background-position: top center;
-    // background-size: cover;
-    // opacity: 0;
-    // pointer-events: none;
+    pointer-events: none;
+    transition: var(--hover-base-duration) var(--hover-base-easing);
+    transition-property: translate, pointer-events;
     @include mq {
-      max-width: rem(280);
-      padding: rem(90) rem(28) rem(10);
+      width: rem(280);
     }
-    // .menuOpen & {
-    //   opacity: 1;
-    //   pointer-events: auto;
-    // }
   }
   .bg {
     position: absolute;
@@ -61,6 +55,19 @@
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    padding: rem(108) rem(46) rem(34);
+    overflow-y: auto;
+    @include mq {
+      padding: rem(90) rem(28) rem(10);
     }
   }
   .menuLogo {
@@ -68,6 +75,9 @@
     aspect-ratio: 1;
     @include mq {
       width: rem(100);
+    }
+    a {
+      @include hover-fade;
     }
     img {
       width: 100%;
@@ -77,6 +87,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include hover-fade;
     .bg {
       position: relative;
       width: rem(111);
