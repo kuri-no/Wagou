@@ -1,7 +1,11 @@
+import Content from '@/components/layout/Content';
+
 export default function Footer() {
-  return <footer className="footer">
-    <div className="footer__inner">
-      <p className="footer__copyright">© 2026 Wagou</p>
-    </div>
-  </footer>;
+  return (
+    <footer className="footer">
+      <Content>
+        <p className="copyright">© 2026 Wagou</p>
+      </Content>
+    </footer>
+  );
 }

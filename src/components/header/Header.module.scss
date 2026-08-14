@@ -11,7 +11,7 @@
   .inner {
     display: flex;
     justify-content: flex-end;
-    padding: min(vwcalc(22), rem(22));
+    padding: min(vwcalc(20), rem(20));
     &:has(.logo) {
       justify-content: space-between;
     }
@@ -77,53 +77,6 @@
     }
     img {
       width: 100%;
-    }
-  }
-  .button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    @include hover-fade;
-    .bg {
-      position: relative;
-      width: rem(111);
-      height: rem(146);
-      img {
-        grid-area: 1 / 1;
-        width: 100%;
-      }
-      .label {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        top: rem(61);
-        left: 50%;
-        translate: -50% 0;
-        width: 100%;
-        color: #fff;
-        .main {
-          font-size: rem(18);
-          line-height: 1.4;
-          font-weight: 700;
-          font-family: var(--font-notosan);
-        }
-        .sub {
-          font-size: rem(12);
-          line-height: 2;
-          font-weight: 400;
-        }
-      }
-    }
-    .icon {
-      position: relative;
-      z-index: 10;
-      width: rem(51);
-      height: rem(47);
-      margin-top: rem(-36);
-      img {
-        width: 100%;
-      }
     }
   }
 }

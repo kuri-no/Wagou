@@ -29,6 +29,7 @@ html {
 }
 
 body {
+  position: relative;
   font-size: clamp(rem(14), vwcalc(16), rem(16));
   line-height: var(--lh-base);
   font-weight: 400;
