@@ -37,16 +37,15 @@ npm run build
 ├── .env                ... 環境定数
 ├── public/             ... 静的ファイル
 ├── src/
+│   ├── app/            ... App Router（ページ・レイアウト・ルーティング）
 │   ├── assets/         ... 画像やフォント等のアセット
 │   ├── components/     ... UIコンポーネント群
+│   ├── hooks/          ... カスタムフック（React再利用ロジック）
 │   ├── icons/          ... SVGアイコン
-│   ├── layouts/        ... レイアウト
-│   ├── libs/            ... ライブラリ・API連携
-│   ├── pages/          ... ページルーティング
+│   ├── lib/            ... ライブラリ・API連携
 │   ├── scss/           ... SCSSグローバル・共通スタイル
 │   ├── types/          ... 型定義
 │   ├── utils/          ... ユーティリティ関数
-└── └── middleware.ts   ... Astro middleware設定／ISRキャッシュの設定
 ```
 
 ## スクリプト

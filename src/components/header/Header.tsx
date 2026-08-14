@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import bg from '@/assets/common/bg.png';
 import iconCv1 from '@/assets/common/icon-cv_1.png';
 import iconCv2 from '@/assets/common/icon-cv_2.png';
@@ -18,6 +18,7 @@ export default function Header() {
   const LogoTagName = pathname === '/' ? 'h1' : 'div';
   const [menuOpen, setMenuOpen] = useState(false);
   const prevPathnameRef = useRef(pathname);
+  const headerRef = useRef<HTMLElement>(null);
 
   const toggleMenu = () => {
     const next = !menuOpen;
@@ -25,18 +26,42 @@ export default function Header() {
     setMenuOpen(next);
   };
 
+  const closeMenu = () => {
+    backSurfaceFixed(false);
+    setMenuOpen(false);
+  };
+
   useEffect(() => {
     if (prevPathnameRef.current === pathname) return;
     prevPathnameRef.current = pathname;
 
-    if (menuOpen) {
-      backSurfaceFixed(false);
-      setMenuOpen(false);
-    }
+    if (menuOpen) closeMenu();
   }, [pathname, menuOpen]);
+
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const setHeaderHeight = (height: number) => {
+      document.documentElement.style.setProperty(
+        '--header-height',
+        `${height}px`,
+      );
+    };
+
+    setHeaderHeight(header.scrollHeight);
+
+    const observer = new ResizeObserver(([entry]) => {
+      setHeaderHeight(entry.contentRect.height);
+    });
+    observer.observe(header);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header
+      ref={headerRef}
       className={`${styles.header} ${menuOpen ? styles.menuOpen : ''}`}
     >
       <div className={styles.inner}>
@@ -70,7 +95,7 @@ export default function Header() {
               </Link>
             </div>
 
-            <Nav />
+            <Nav onLinkClick={closeMenu} />
 
             <Link href="/reservation/" className={styles.button}>
               <div className={styles.bg}>
