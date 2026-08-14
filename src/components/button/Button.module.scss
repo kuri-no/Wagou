@@ -11,17 +11,15 @@
   background-color: var(--color-primary);
   border: rem(1) solid transparent;
   border-radius: var(--round-button);
-  transition:
-    color var(--hover-base-duration) var(--hover-base-easing),
-    background-color var(--hover-base-duration) var(--hover-base-easing),
-    border-color var(--hover-base-duration) var(--hover-base-easing);
-    @media (any-hover: hover) {
-      &:hover {
-        color: var(--color-primary);
-        background-color: var(--color-base-bg);
-        border-color: var(--color-primary);
-      }
+  transition: var(--hover-base-duration) var(--hover-base-easing);
+  transition-property: color, background-color, border-color;
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--color-primary);
+      background-color: var(--color-base-bg);
+      border-color: var(--color-primary);
     }
+  }
   &.outline {
     color: var(--color-primary);
     background-color: transparent;

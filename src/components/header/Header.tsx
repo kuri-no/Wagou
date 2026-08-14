@@ -1,9 +1,114 @@
-"use client";
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
+import bg from '@/assets/common/bg.png';
+import logo from '@/assets/common/logo.png';
+import Cv from '@/components/header/Cv';
+import HamburgerIcon from '@/components/header/HamburgerIcon';
+import Nav from '@/components/header/Nav';
+import backSurfaceFixed from '@/utils/backSurfaceFixed';
+import styles from './Header.module.scss';
 
 export default function Header() {
-  return <header className="header">
-    <div className="header__inner">
-      <h1 className="header__title">Wagou</h1>
-    </div>
-  </header>;
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const prevPathnameRef = useRef(pathname);
+  const headerRef = useRef<HTMLElement>(null);
+
+  const toggleMenu = () => {
+    const next = !menuOpen;
+    backSurfaceFixed(next);
+    setMenuOpen(next);
+  };
+
+  const closeMenu = useCallback(() => {
+    backSurfaceFixed(false);
+    setMenuOpen(false);
+  }, []);
+
+  useEffect(() => {
+    if (prevPathnameRef.current === pathname) return;
+    prevPathnameRef.current = pathname;
+
+    if (menuOpen) closeMenu();
+  }, [pathname, menuOpen, closeMenu]);
+
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const setHeaderHeight = (height: number) => {
+      document.documentElement.style.setProperty(
+        '--header-height',
+        `${height}px`,
+      );
+    };
+
+    setHeaderHeight(header.scrollHeight);
+
+    const observer = new ResizeObserver(([entry]) => {
+      setHeaderHeight(entry.contentRect.height);
+    });
+    observer.observe(header);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <header
+      ref={headerRef}
+      className={`${styles.header} ${menuOpen ? styles.menuOpen : ''}`}
+    >
+      <div className={styles.inner}>
+        {pathname !== '/' && (
+          <div className={styles.logo}>
+            <Link href="/" className={styles.link}>
+              <Image
+                src={logo}
+                width={100}
+                height={100}
+                alt={process.env.NEXT_PUBLIC_SITE_TITLE}
+                loading="eager"
+                fetchPriority="high"
+              />
+            </Link>
+          </div>
+        )}
+
+        <div className={styles.body}>
+          <div className={styles.bg}>
+            <Image src={bg} alt="" loading="lazy" />
+          </div>
+          <div className={styles.content}>
+            <div className={styles.menuLogo}>
+              <Link href="/">
+                <Image
+                  src={logo}
+                  width={130}
+                  height={130}
+                  alt={process.env.NEXT_PUBLIC_SITE_TITLE}
+                  loading="lazy"
+                />
+              </Link>
+            </div>
+
+            <Nav onLinkClick={closeMenu} />
+
+            <Cv />
+          </div>
+        </div>
+
+        <HamburgerIcon menuOpen={menuOpen} onClick={toggleMenu} />
+      </div>
+    </header>
+  );
 }

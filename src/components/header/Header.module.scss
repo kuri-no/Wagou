@@ -1,0 +1,82 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-index-header);
+  &.menuOpen {
+    .body {
+      translate: 0;
+      pointer-events: auto;
+    }
+  }
+  .inner {
+    display: flex;
+    justify-content: flex-end;
+    padding: min(vwcalc(20), rem(20));
+    &:has(.logo) {
+      justify-content: space-between;
+    }
+    @include mq {
+      padding: rem(10) rem(17);
+    }
+  }
+  .logo {
+    width: 100%;
+    max-width: min(vwcalc(100), rem(100));
+    @include mq {
+      max-width: rem(60);
+    }
+    .link {
+      display: block;
+      @include hover-fade;
+    }
+  }
+  .body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    translate: 120% 0;
+    width: min(vwcalc(370), rem(370));
+    height: 100dvh;
+    pointer-events: none;
+    transition: var(--hover-base-duration) var(--hover-base-easing);
+    transition-property: translate, pointer-events;
+    @include mq {
+      width: rem(280);
+    }
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    padding: rem(108) rem(46) rem(34);
+    overflow-y: auto;
+    @include mq {
+      padding: rem(90) rem(28) rem(10);
+    }
+  }
+  .menuLogo {
+    width: clamp(rem(100), vwcalc(130), rem(130));
+    aspect-ratio: 1;
+    @include mq {
+      width: rem(100);
+    }
+    a {
+      @include hover-fade;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.nav {
+  margin-block: rem(32) rem(78);
+  @include mq {
+    margin-block: rem(30) rem(120);
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(20);
+  }
+  .link {
+    display: block;
+    line-height: 2.5;
+    font-weight: 700;
+    text-align: right;
+    transition: color var(--hover-base-duration) var(--hover-base-easing);
+    @media (any-hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+  }
+}

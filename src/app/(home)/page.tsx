@@ -1,10 +1,10 @@
 import Button from '@/components/button/Button';
 import Heading from '@/components/heading/Heading';
-import Inner from '@/components/inner/Inner';
+import Content from '@/components/layout/Content';
 
 export default function Home() {
   return (
-    <Inner>
+    <Content>
       <div className="test" style={{ height: '200px' }}></div>
 
       <Heading label="日々のこと" />
@@ -13,7 +13,7 @@ export default function Home() {
 
       <Button href="/news/" text="一覧へ" center />
 
-      <div className="test" style={{ height: '200px' }}></div>
+      <div id="anc_1" className="test" style={{ height: '600px', backgroundColor: 'blue' }}></div>
 
       <Button
         href="https://maps.app.goo.gl/sFwV36UioEouegU38"
@@ -23,7 +23,17 @@ export default function Home() {
         blank
       />
 
-      <div className="test" style={{ height: '200px' }}></div>
-    </Inner>
+      <div id="anc_2" className="test" style={{ height: '600px', backgroundColor: 'purple' }}></div>
+
+      <Button
+        href="https://maps.app.goo.gl/sFwV36UioEouegU38"
+        text="Google mapへ"
+        variant="outline"
+        center
+        blank
+      />
+
+      <div id="anc_3" className="test" style={{ height: '600px', backgroundColor: 'green' }}></div>
+    </Content>
   );
 }
