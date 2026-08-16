@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import type { MouseEvent } from 'react';
 import useScroll from '@/hooks/useScroll';
 import styles from './Nav.module.scss';
@@ -11,20 +10,11 @@ type NavProps = {
 };
 
 export default function Nav({ onLinkClick }: NavProps) {
-  const pathname = usePathname();
-  const { scrollToHash } = useScroll();
+  const { handleAnchorClick } = useScroll();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     onLinkClick?.();
-
-    const [path, hash] = href.split('#');
-    if (!hash || path !== pathname) return;
-
-    const target = document.getElementById(hash);
-    if (!target) return;
-
-    e.preventDefault();
-    scrollToHash(hash);
+    handleAnchorClick(e, href);
   };
 
   return (
@@ -34,7 +24,7 @@ export default function Nav({ onLinkClick }: NavProps) {
           <Link
             href="/about/"
             className={styles.link}
-            onClick={(e) => handleClick(e, '/about/')}
+            onClick={e => handleClick(e, '/about/')}
           >
             和合について
           </Link>
@@ -44,7 +34,7 @@ export default function Nav({ onLinkClick }: NavProps) {
             href="/#anc_1"
             scroll={false}
             className={styles.link}
-            onClick={(e) => handleClick(e, '/#anc_1')}
+            onClick={e => handleClick(e, '/#anc_1')}
           >
             おしながき
           </Link>
@@ -53,7 +43,7 @@ export default function Nav({ onLinkClick }: NavProps) {
           <Link
             href="/news/"
             className={styles.link}
-            onClick={(e) => handleClick(e, '/news/')}
+            onClick={e => handleClick(e, '/news/')}
           >
             日々のこと
           </Link>
@@ -63,7 +53,7 @@ export default function Nav({ onLinkClick }: NavProps) {
             href="/#anc_2"
             scroll={false}
             className={styles.link}
-            onClick={(e) => handleClick(e, '/#anc_2')}
+            onClick={e => handleClick(e, '/#anc_2')}
           >
             アクセス
           </Link>

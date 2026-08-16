@@ -1,9 +1,13 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import type { MouseEvent } from 'react';
 import { useCallback, useEffect } from 'react';
 
-const scrollToHash = (hash: string, behavior: ScrollBehavior = 'smooth') => {
+export const scrollToHash = (
+  hash: string,
+  behavior: ScrollBehavior = 'smooth',
+) => {
   const target = document.getElementById(hash.replace(/^#/, ''));
   if (!target) return;
 
@@ -21,5 +25,19 @@ export default function useScroll() {
     scrollToHash(window.location.hash);
   }, [pathname]);
 
-  return { scrollToHash: useCallback(scrollToHash, []) };
+  const handleAnchorClick = useCallback(
+    (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+      const [path, hash] = href.split('#');
+      if (!hash || path !== pathname) return;
+
+      const target = document.getElementById(hash);
+      if (!target) return;
+
+      e.preventDefault();
+      scrollToHash(hash);
+    },
+    [pathname],
+  );
+
+  return { scrollToHash, handleAnchorClick };
 }
