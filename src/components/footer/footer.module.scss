@@ -1,0 +1,114 @@
+.footer {
+  position: relative;
+  padding-block: min(vwcalc(180), rem(180)) min(vwcalc(24), rem(24));
+  overflow: hidden;
+  @include mq {
+    padding-block: rem(126) rem(12);
+  }
+  &::before {
+    position: absolute;
+    top: rem(-1);
+    left: 0;
+    width: 100%;
+    height: min(vwcalc(100), rem(100));
+    background-color: var(--color-base-bg);
+    border-bottom-right-radius: rem(210);
+    content: '';
+    @include mq {
+      height: rem(100);
+    }
+  }
+  .bg {
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: -1;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .body {
+    display: grid;
+    place-items: center;
+    .logo {
+      display: block;
+      width: min(vwcalc(130), rem(130));
+      aspect-ratio: 1;
+      @include hover-fade;
+      @include mq {
+        width: rem(110);
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .company {
+      margin-top: min(vwcalc(22), rem(22));
+      font-weight: 700;
+      text-align: center;
+      @include mq {
+        margin-top: rem(12);
+      }
+      .main {
+        font-size: clamp(rem(16), vwcalc(18), rem(18));
+        line-height: 2.2;
+        @include mq {
+          font-size: rem(18);
+        }
+      }
+      .sub {
+        letter-spacing: 0.12em;
+      }
+    }
+    .nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0 min(vwcalc(30), rem(30));
+      margin-top: min(vwcalc(18), rem(18));
+      @include mq {
+        grid-template-columns: repeat(2, 1fr);
+        gap: rem(8) rem(30);
+        margin-top: rem(30);
+        text-align: center;
+      }
+      .item {
+        position: relative;
+        & + .item {
+          &::before {
+            @include mq(lg) {
+              position: absolute;
+              top: 50%;
+              left: rem(-17);
+              translate: 0 -50%;
+              width: rem(1);
+              height: rem(20);
+              background-color: currentColor;
+              content: '';
+            }
+          }
+        }
+        .link {
+          display: block;
+          font-size: clamp(rem(12), vwcalc(14), rem(14));
+          line-height: 2.8;
+          font-weight: 700;
+          @include hover-fade;
+          @include mq {
+            font-size: rem(14);
+          }
+        }
+      }
+    }
+    .copyright {
+      margin-top: min(vwcalc(14), rem(14));
+      font-size: clamp(rem(12), vwcalc(14), rem(14));
+      line-height: 1.6;
+      @include hover-fade;
+      @include mq {
+        margin-top: rem(18);
+        font-size: rem(14);
+      }
+    }
+  }
+}
