@@ -1,0 +1,28 @@
+.mv {
+  position: relative;
+  .bg {
+    position: absolute;
+    inset: 0 0 auto 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .slider {
+    .slide {
+      width: min(vwcalc(990), rem(990));
+      height: min(vwcalc(737), rem(737));
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .bgBottom {
+    width: 100%;
+    height: 21.5vw;
+    img {
+      width: 100%;
+    }
+  }
+}
