@@ -31,46 +31,48 @@ export default function Footer() {
             <p className={styles.main}>茶舗和合</p>
             <p className={styles.sub}>愛知県常滑市栄町6丁目166</p>
           </div>
-          <ul className={styles.nav}>
-            <li className={styles.item}>
-              <Link
-                href="/about/"
-                className={styles.link}
-                onClick={e => handleAnchorClick(e, '/about/')}
-              >
-                和合について
-              </Link>
-            </li>
-            <li className={styles.item}>
-              <Link
-                href="/#anc_1"
-                scroll={false}
-                className={styles.link}
-                onClick={e => handleAnchorClick(e, '/#anc_1')}
-              >
-                おしながき
-              </Link>
-            </li>
-            <li className={styles.item}>
-              <Link
-                href="/news/"
-                className={styles.link}
-                onClick={e => handleAnchorClick(e, '/news/')}
-              >
-                日々のこと
-              </Link>
-            </li>
-            <li className={styles.item}>
-              <Link
-                href="/#anc_2"
-                scroll={false}
-                className={styles.link}
-                onClick={e => handleAnchorClick(e, '/#anc_2')}
-              >
-                アクセス
-              </Link>
-            </li>
-          </ul>
+          <nav className={styles.nav}>
+            <ul className={styles.list}>
+              <li className={styles.item}>
+                <Link
+                  href="/about/"
+                  className={styles.link}
+                  onClick={e => handleAnchorClick(e, '/about/')}
+                >
+                  和合について
+                </Link>
+              </li>
+              <li className={styles.item}>
+                <Link
+                  href="/#anc_1"
+                  scroll={false}
+                  className={styles.link}
+                  onClick={e => handleAnchorClick(e, '/#anc_1')}
+                >
+                  おしながき
+                </Link>
+              </li>
+              <li className={styles.item}>
+                <Link
+                  href="/news/"
+                  className={styles.link}
+                  onClick={e => handleAnchorClick(e, '/news/')}
+                >
+                  日々のこと
+                </Link>
+              </li>
+              <li className={styles.item}>
+                <Link
+                  href="/#anc_2"
+                  scroll={false}
+                  className={styles.link}
+                  onClick={e => handleAnchorClick(e, '/#anc_2')}
+                >
+                  アクセス
+                </Link>
+              </li>
+            </ul>
+          </nav>
           <p className={styles.copyright}>© 2026 Wagou</p>
         </div>
       </Content>

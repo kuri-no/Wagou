@@ -70,18 +70,16 @@ export default function Header() {
     >
       <div className={styles.inner}>
         {pathname !== '/' && (
-          <div className={styles.logo}>
-            <Link href="/" className={styles.link}>
-              <Image
-                src={logo}
-                width={100}
-                height={100}
-                alt={process.env.NEXT_PUBLIC_SITE_TITLE}
-                loading="eager"
-                fetchPriority="high"
-              />
-            </Link>
-          </div>
+          <Link href="/" className={styles.logo}>
+            <Image
+              src={logo}
+              width={100}
+              height={100}
+              alt={process.env.NEXT_PUBLIC_SITE_TITLE}
+              loading="eager"
+              fetchPriority="high"
+            />
+          </Link>
         )}
 
         <div className={styles.body}>

@@ -62,15 +62,17 @@
       }
     }
     .nav {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0 min(vwcalc(30), rem(30));
-      margin-top: min(vwcalc(18), rem(18));
-      @include mq {
-        grid-template-columns: repeat(2, 1fr);
-        gap: rem(8) rem(30);
-        margin-top: rem(30);
-        text-align: center;
+      .list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0 min(vwcalc(30), rem(30));
+        margin-top: min(vwcalc(18), rem(18));
+        @include mq {
+          grid-template-columns: repeat(2, 1fr);
+          gap: rem(8) rem(30);
+          margin-top: rem(30);
+          text-align: center;
+        }
       }
       .item {
         position: relative;
