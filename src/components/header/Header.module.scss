@@ -20,14 +20,12 @@
     }
   }
   .logo {
+    display: block;
     width: 100%;
     max-width: min(vwcalc(100), rem(100));
+    @include hover-fade;
     @include mq {
       max-width: rem(60);
-    }
-    .link {
-      display: block;
-      @include hover-fade;
     }
   }
   .body {

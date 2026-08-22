@@ -12,19 +12,19 @@ type NavProps = {
 export default function Nav({ onLinkClick }: NavProps) {
   const { handleAnchorClick } = useScroll();
 
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     onLinkClick?.();
     handleAnchorClick(e, href);
   };
 
   return (
-    <nav id="menu" className={styles.nav}>
+    <nav className={styles.nav}>
       <ul className={styles.list}>
         <li className={styles.item}>
           <Link
             href="/about/"
             className={styles.link}
-            onClick={e => handleClick(e, '/about/')}
+            onClick={e => handleNavClick(e, '/about/')}
           >
             和合について
           </Link>
@@ -34,7 +34,7 @@ export default function Nav({ onLinkClick }: NavProps) {
             href="/#anc_1"
             scroll={false}
             className={styles.link}
-            onClick={e => handleClick(e, '/#anc_1')}
+            onClick={e => handleNavClick(e, '/#anc_1')}
           >
             おしながき
           </Link>
@@ -43,7 +43,7 @@ export default function Nav({ onLinkClick }: NavProps) {
           <Link
             href="/news/"
             className={styles.link}
-            onClick={e => handleClick(e, '/news/')}
+            onClick={e => handleNavClick(e, '/news/')}
           >
             日々のこと
           </Link>
@@ -53,7 +53,7 @@ export default function Nav({ onLinkClick }: NavProps) {
             href="/#anc_2"
             scroll={false}
             className={styles.link}
-            onClick={e => handleClick(e, '/#anc_2')}
+            onClick={e => handleNavClick(e, '/#anc_2')}
           >
             アクセス
           </Link>
