@@ -74,8 +74,7 @@ export default function Mv() {
               width={130}
               height={130}
               alt={process.env.NEXT_PUBLIC_SITE_TITLE}
-              loading="eager"
-              fetchPriority="high"
+              loading="lazy"
             />
           </Link>
 
@@ -126,16 +125,26 @@ export default function Mv() {
         <div ref={sliderRef} className={`${styles.slider} splide`}>
           <div className="splide__track">
             <ul className="splide__list">
-              {slides.map(slide => (
+              {slides.map((slide, index) => (
                 <li key={slide.src} className={`${styles.slide} splide__slide`}>
-                  <Image
-                    src={slide}
-                    width={990}
-                    height={737}
-                    alt=""
-                    loading="eager"
-                    fetchPriority="high"
-                  />
+                  {index === 0 ? (
+                    <Image
+                      src={slide}
+                      width={990}
+                      height={737}
+                      alt=""
+                      loading="eager"
+                      fetchPriority="high"
+                    />
+                  ) : (
+                    <Image
+                      src={slide}
+                      width={990}
+                      height={737}
+                      alt=""
+                      loading="lazy"
+                    />
+                  )}
                 </li>
               ))}
             </ul>
@@ -154,8 +163,7 @@ export default function Mv() {
               width={200}
               height={131}
               alt=""
-              loading="eager"
-              fetchPriority="high"
+              loading="lazy"
             />
           </div>
         </div>
