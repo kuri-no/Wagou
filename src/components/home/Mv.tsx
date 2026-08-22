@@ -28,14 +28,15 @@ export default function Mv() {
   useEffect(() => {
     if (!sliderRef.current) return;
 
-    const splide = new Splide(sliderRef.current, {
+    const mvSlider = new Splide(sliderRef.current, {
       type: 'fade',
       rewind: true,
       perPage: 1,
       arrows: false,
       pagination: true,
       autoplay: true,
-      interval: 4000,
+      interval: 3000,
+      speed: 400,
       pauseOnHover: false,
       intersection: {
         inView: {
@@ -48,7 +49,7 @@ export default function Mv() {
     }).mount({ Intersection });
 
     return () => {
-      splide.destroy();
+      mvSlider.destroy();
     };
   }, []);
 
@@ -122,18 +123,18 @@ export default function Mv() {
           </nav>
         </div>
 
-        <div ref={sliderRef} className={`splide ${styles.slider}`}>
+        <div ref={sliderRef} className={`${styles.slider} splide`}>
           <div className="splide__track">
             <ul className="splide__list">
-              {slides.map((slide, index) => (
-                <li key={slide.src} className={`splide__slide ${styles.slide}`}>
+              {slides.map(slide => (
+                <li key={slide.src} className={`${styles.slide} splide__slide`}>
                   <Image
                     src={slide}
                     width={990}
                     height={737}
                     alt=""
                     loading="eager"
-                    fetchPriority={index === 0 ? 'high' : undefined}
+                    fetchPriority="high"
                   />
                 </li>
               ))}

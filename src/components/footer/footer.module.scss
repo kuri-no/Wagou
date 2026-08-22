@@ -20,7 +20,8 @@
   }
   .bg {
     position: absolute;
-    inset: 0 0 auto 0;
+    top: 0;
+    left: 0;
     z-index: -1;
     img {
       width: 100%;
