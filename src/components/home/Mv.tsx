@@ -68,15 +68,17 @@ export default function Mv() {
 
       <div className={styles.body}>
         <div className={styles.menu}>
-          <Link href="/" className={styles.logo}>
-            <Image
-              src={logo}
-              width={130}
-              height={130}
-              alt={process.env.NEXT_PUBLIC_SITE_TITLE}
-              loading="lazy"
-            />
-          </Link>
+          <h1 className={styles.logo}>
+            <Link href="/" className={styles.link}>
+              <Image
+                src={logo}
+                width={130}
+                height={130}
+                alt={process.env.NEXT_PUBLIC_SITE_TITLE}
+                loading="lazy"
+              />
+            </Link>
+          </h1>
 
           <nav className={styles.nav}>
             <ul className={styles.list}>
@@ -158,13 +160,7 @@ export default function Mv() {
             <span>茶舗和合</span>
           </p>
           <div className={styles.icon}>
-            <Image
-              src={icon1}
-              width={200}
-              height={131}
-              alt=""
-              loading="lazy"
-            />
+            <Image src={icon1} width={200} height={131} alt="" loading="lazy" />
           </div>
         </div>
       </div>

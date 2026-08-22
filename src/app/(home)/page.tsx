@@ -1,5 +1,7 @@
 import Button from '@/components/button/Button';
 import Heading from '@/components/heading/Heading';
+import About from '@/components/home/About';
+import Access from '@/components/home/Access';
 import Mv from '@/components/home/Mv';
 import Content from '@/components/layout/Content';
 
@@ -7,6 +9,8 @@ export default function Home() {
   return (
     <>
       <Mv />
+
+      <About />
 
       <Content>
         <div
@@ -46,6 +50,8 @@ export default function Home() {
           style={{ height: '600px', backgroundColor: 'green' }}
         ></div>
       </Content>
+
+      <Access />
     </>
   );
 }

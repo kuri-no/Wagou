@@ -33,15 +33,17 @@
         top: rem(-22);
         left: rem(13);
       }
-      .logo {
-        width: min(vwcalc(130), rem(130));
-        aspect-ratio: 1;
-        @include hover-fade;
-        @include mq {
-          width: rem(80);
-        }
-        img {
-          width: 100%;
+      .link {
+        .logo {
+          width: min(vwcalc(130), rem(130));
+          aspect-ratio: 1;
+          @include hover-fade;
+          @include mq {
+            width: rem(80);
+          }
+          img {
+            width: 100%;
+          }
         }
       }
       .nav {
