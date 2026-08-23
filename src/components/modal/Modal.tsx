@@ -1,17 +1,17 @@
 'use client';
 
 import Image, { type StaticImageData } from 'next/image';
-import { useId, useRef } from 'react';
+import { Fragment, useId, useRef } from 'react';
 import Button from '@/components/button/Button';
-import styles from './ModalCard.module.scss';
+import styles from './Modal.module.scss';
 
-type ModalCardProps = {
+type ModalProps = {
   src: StaticImageData;
   label: string;
   detail: string;
 };
 
-export default function ModalCard({ src, label, detail }: ModalCardProps) {
+export default function Modal({ src, label, detail }: ModalProps) {
   const titleId = useId();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -32,12 +32,12 @@ export default function ModalCard({ src, label, detail }: ModalCardProps) {
         </div>
         <div className={styles.content}>
           <h3 className={styles.label}>{label}</h3>
+          <Button
+            text="詳細へ"
+            className={styles.moreButton}
+            onClick={openDialog}
+          />
         </div>
-        <Button
-          text="詳細へ"
-          className={styles.moreButton}
-          onClick={openDialog}
-        />
       </div>
       <dialog
         ref={dialogRef}
@@ -60,13 +60,22 @@ export default function ModalCard({ src, label, detail }: ModalCardProps) {
           <p id={titleId} className={styles.label}>
             {label}
           </p>
-          <p className={styles.detail}>{detail}</p>
-          <Button
-            text="閉じる"
-            variant="outline"
-            className={styles.closeButton}
-            onClick={closeDialog}
-          />
+          <p className={styles.detail}>
+            {detail.split('<br />').map((line, i, arr) => (
+              <Fragment key={i}>
+                {line}
+                {i < arr.length - 1 && <br />}
+              </Fragment>
+            ))}
+          </p>
+          <div className={styles.foot}>
+            <Button
+              text="閉じる"
+              variant="outline"
+              className={styles.closeButton}
+              onClick={closeDialog}
+            />
+          </div>
         </div>
       </dialog>
     </li>

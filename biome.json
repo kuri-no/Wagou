@@ -51,11 +51,14 @@
 	},
 	"overrides": [
 		{
-			"includes": ["src/components/modal/ModalCard.tsx"],
+			"includes": ["src/components/modal/Modal.tsx"],
 			"linter": {
 				"rules": {
 					"a11y": {
 						"useKeyWithClickEvents": "off"
+					},
+					"suspicious": {
+						"noArrayIndexKey": "off"
 					}
 				}
 			}

@@ -1,19 +1,36 @@
 .menu {
-  position: relative;
   margin-top: min(vwcalc(224), rem(224));
+  @include mq {
+    margin-top: rem(560);
+  }
+  .menuContent {
+    position: relative;
+  }
   .lead {
     margin-top: min(vwcalc(40), rem(40));
-    font-size: clamp(rem(13), vwcalc(15), rem(15));
+    font-size: clamp(rem(11), vwcalc(15), rem(15));
     line-height: 1.6;
     letter-spacing: 0.12em;
     text-align: center;
+    @include mq {
+      margin-top: rem(50);
+      font-size: rem(15);
+    }
   }
   .icon {
     position: absolute;
     top: min(vwcalc(78), rem(78));
-    left: min(vwcalc(415), rem(415));
+    left: min(vwcalc(285), rem(285));
+    z-index: 10;
     width: min(vwcalc(102), rem(102));
     height: min(vwcalc(122), rem(122));
+    @include mq {
+      top: revert;
+      bottom: rem(-84);
+      left: rem(11);
+      width: rem(90);
+      height: rem(108);
+    }
     img {
       width: 100%;
     }
@@ -22,6 +39,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: min(vwcalc(42), rem(42));
-    margin-top: min(vwcalc(60), rem(60));
+    width: 100%;
+    max-width: min(vwcalc(984), rem(984));
+    margin: min(vwcalc(60), rem(60)) auto 0;
+    @include mq {
+      grid-template-columns: 1fr;
+      gap: rem(30);
+      max-width: rem(302);
+      margin: rem(50) auto 0;
+    }
   }
 }

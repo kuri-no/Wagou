@@ -1,0 +1,108 @@
+.modal {
+  .head {
+    .thumbnail {
+      width: min(vwcalc(300), rem(300));
+      @include mq {
+        width: rem(302);
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .content {
+      padding: rem(10) 0 0 rem(18);
+      background-color: #fff;
+      border-radius: 0 0 var(--round-base) var(--round-base);
+    }
+    .label {
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+    .moreButton {
+      max-width: rem(62);
+      min-height: rem(34);
+      margin: rem(-8) 0 0 auto;
+      padding: rem(5) rem(8);
+      border-radius: var(--round-base) 0 var(--round-base) 0;
+    }
+  }
+  .panel {
+    width: 100%;
+    max-width: rem(500);
+    padding: 0;
+    border: 0;
+    border-radius: var(--round-lg);
+    @include mq {
+      max-width: rem(390);
+    }
+    &::backdrop {
+      background-color: rgb(0 0 0 / 0.15);
+    }
+    .inner {
+      padding: rem(70) rem(40) rem(26);
+      background-color: #fff;
+      @include mq {
+        padding: rem(60) rem(25) rem(25);
+      }
+      .image {
+        width: rem(300);
+        margin-inline: auto;
+        img {
+          width: 100%;
+          border-radius: 0 0 var(--round-base) var(--round-base);
+        }
+      }
+      .label {
+        margin-top: rem(15);
+        line-height: 2.5;
+        font-weight: 700;
+        text-align: center;
+        @include mq {
+          margin-top: rem(24);
+        }
+      }
+      .detail {
+        margin-top: rem(9);
+        font-size: rem(14);
+        line-height: 2.1;
+        text-align: center;
+        @include mq {
+          margin-top: rem(14);
+        }
+      }
+      .foot {
+        position: relative;
+        max-width: rem(146);
+        min-height: rem(36);
+        margin: rem(90) 0 0 auto;
+        &:has(.closeButton:hover) {
+          &::after {
+            background-color: #fff;
+          }
+        }
+        &::after {
+          display: block;
+          position: absolute;
+          top: 50%;
+          right: rem(32);
+          translate: 0 -50%;
+          z-index: 10;
+          width: rem(17);
+          @include icon(close);
+          background-color: var(--color-primary);
+          transition: background-color var(--hover-base-duration) var(--hover-base-easing);
+          pointer-events: none;
+          content: '';
+        }
+        .closeButton {
+          max-width: 100%;
+          min-height: 100%;
+          padding: rem(5) rem(54) rem(5) rem(32);
+          font-size: rem(16);
+          letter-spacing: 0.12em;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

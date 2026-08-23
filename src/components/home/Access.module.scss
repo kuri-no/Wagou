@@ -27,7 +27,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: rem(20);
+        border-radius: var(--round-lg);
       }
     }
     .content {
