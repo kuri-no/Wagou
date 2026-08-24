@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.bg}>
-        <Image src={bg} width={1440} height={542} alt="" loading="lazy" />
+        <Image src={bg} alt="" width={1440} height={542} loading="lazy" />
       </div>
       <Content>
         <div className={styles.body}>

@@ -69,7 +69,7 @@ export default function Menu() {
         <Heading label="おしながき" />
         <p className={styles.lead}>急須で三煎目までお楽しみいただけます。</p>
         <div className={styles.icon}>
-          <Image src={icon3} width={102} height={122} alt="" loading="lazy" />
+          <Image src={icon3} alt="" width={102} height={122} loading="lazy" />
         </div>
         <ul className={styles.list}>
           {modalItems.map(item => (

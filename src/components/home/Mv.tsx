@@ -58,9 +58,9 @@ export default function Mv() {
       <div className={styles.bg}>
         <Image
           src={bg}
+          alt=""
           width={1440}
           height={875}
-          alt=""
           loading="eager"
           fetchPriority="high"
         />
@@ -132,18 +132,18 @@ export default function Mv() {
                   {index === 0 ? (
                     <Image
                       src={slide}
+                      alt=""
                       width={990}
                       height={737}
-                      alt=""
                       loading="eager"
                       fetchPriority="high"
                     />
                   ) : (
                     <Image
                       src={slide}
+                      alt=""
                       width={990}
                       height={737}
-                      alt=""
                       loading="lazy"
                     />
                   )}
@@ -160,7 +160,7 @@ export default function Mv() {
             <span>茶舗和合</span>
           </p>
           <div className={styles.icon}>
-            <Image src={icon1} width={200} height={131} alt="" loading="lazy" />
+            <Image src={icon1} alt="" width={200} height={131} loading="lazy" />
           </div>
         </div>
       </div>
@@ -170,9 +170,9 @@ export default function Mv() {
           <source media="(max-width: 768px)" srcSet={bgBottomMd.src} />
           <Image
             src={bgBottom}
+            alt=""
             width={1440}
             height={310}
-            alt=""
             loading="eager"
             fetchPriority="high"
           />

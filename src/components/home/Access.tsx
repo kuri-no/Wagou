@@ -4,7 +4,7 @@ import styles from './Access.module.scss';
 
 export default function Access() {
   return (
-    <div className={styles.access}>
+    <div id="anc_2" className={styles.access}>
       <Content>
         <div className={styles.body}>
           <div className={styles.map}>

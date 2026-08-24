@@ -1,7 +1,9 @@
 .access {
-  margin-top: min(vwcalc(154), rem(154));
+  position: relative;
+  z-index: 10;
+  margin-top: 20.8vw;
   @include mq {
-    margin-top: rem(244);
+    margin-top: rem(280);
   }
   .body {
     display: grid;

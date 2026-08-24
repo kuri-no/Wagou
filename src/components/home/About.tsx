@@ -55,20 +55,20 @@ export default function About() {
           </p>
         </div>
         <div className={styles.icon}>
-          <Image src={icon2} width={190} height={142} alt="" loading="lazy" />
+          <Image src={icon2} alt="" width={190} height={142} loading="lazy" />
         </div>
       </div>
       <div className={`${styles.deco} ${styles.deco_1}`}>
-        <Image src={img1} width={556} height={610} alt="" loading="lazy" />
+        <Image src={img1} alt="" width={556} height={610} loading="lazy" />
       </div>
       <div className={`${styles.deco} ${styles.deco_2}`}>
-        <Image src={img2} width={639} height={645} alt="" loading="lazy" />
+        <Image src={img2} alt="" width={639} height={645} loading="lazy" />
       </div>
       <div className={`${styles.deco} ${styles.deco_3}`}>
-        <Image src={img3} width={516} height={653} alt="" loading="lazy" />
+        <Image src={img3} alt="" width={516} height={653} loading="lazy" />
       </div>
       <div className={`${styles.deco} ${styles.deco_4}`}>
-        <Image src={img4} width={597} height={652} alt="" loading="lazy" />
+        <Image src={img4} alt="" width={597} height={652} loading="lazy" />
       </div>
     </div>
   );
