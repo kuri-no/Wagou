@@ -3,6 +3,7 @@
 import Image, { type StaticImageData } from 'next/image';
 import { Fragment, useId, useRef } from 'react';
 import Button from '@/components/button/Button';
+import backSurfaceFixed from '@/utils/backSurfaceFixed';
 import styles from './Modal.module.scss';
 
 type ModalProps = {
@@ -15,7 +16,10 @@ export default function Modal({ src, label, detail }: ModalProps) {
   const titleId = useId();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const openDialog = () => dialogRef.current?.showModal();
+  const openDialog = () => {
+    dialogRef.current?.showModal();
+    backSurfaceFixed(true);
+  };
   const closeDialog = () => dialogRef.current?.close();
 
   return (
@@ -46,6 +50,7 @@ export default function Modal({ src, label, detail }: ModalProps) {
         onClick={event => {
           if (event.target === event.currentTarget) closeDialog();
         }}
+        onClose={() => backSurfaceFixed(false)}
       >
         <div className={styles.inner}>
           <div className={styles.image}>

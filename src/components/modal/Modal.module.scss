@@ -32,11 +32,21 @@
     padding: 0;
     border: 0;
     border-radius: var(--round-lg);
+    animation: modalFade 0.5s forwards;
+    @keyframes modalFade {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
     @include mq {
       max-width: rem(390);
     }
     &::backdrop {
       background-color: rgb(0 0 0 / 0.15);
+      animation: modalFade 0.5s forwards;
     }
     .inner {
       padding: rem(70) rem(40) rem(26);
