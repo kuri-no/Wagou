@@ -16,18 +16,28 @@ import styles from './Flow.module.scss';
 export default function Flow() {
   // const slides = [slide1, slide2, slide3, slide4];
   const sliderRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sliderRef.current) return;
 
     const flowSlider = new Splide(sliderRef.current, {
       rewind: false,
-      perPage: 2,
+      perPage: 1.85,
+      gap: '36px',
       arrows: true,
       autoplay: false,
       speed: 1500,
       pauseOnHover: false,
     }).mount();
+
+    flowSlider.on('mounted move', () => {
+      const bar = progressBarRef.current;
+      if (!bar) return;
+      const end = flowSlider.Components.Controller.getEnd() + 1;
+      const rate = Math.min((flowSlider.index + 1) / end, 1);
+      bar.style.width = `${rate * 100}%`;
+    });
 
     return () => {
       flowSlider.destroy();
@@ -47,10 +57,10 @@ export default function Flow() {
       <div className={styles.icon}>
         <Image src={icon4} alt="" width={229} height={172} loading="lazy" />
       </div>
-      <div ref={sliderRef} className={`${styles.slider} splide`}>
+      <div ref={sliderRef} className="splide">
         <div className="splide__track">
           <ul className="splide__list">
-            <li className={`${styles.slide} splide__slide`}>
+            <li className="splide__slide">
               <div className={styles.row}>
                 <div className={styles.content}>
                   <p className={styles.number}>01</p>
@@ -70,7 +80,7 @@ export default function Flow() {
                 </div>
               </div>
             </li>
-            <li className={`${styles.slide} splide__slide`}>
+            <li className="splide__slide">
               <div className={styles.row}>
                 <div className={styles.content}>
                   <p className={styles.number}>02</p>
@@ -90,7 +100,7 @@ export default function Flow() {
                 </div>
               </div>
             </li>
-            <li className={`${styles.slide} splide__slide`}>
+            <li className="splide__slide">
               <div className={styles.row}>
                 <div className={styles.content}>
                   <p className={styles.number}>03</p>
@@ -110,7 +120,7 @@ export default function Flow() {
                 </div>
               </div>
             </li>
-            <li className={`${styles.slide} splide__slide`}>
+            <li className="splide__slide">
               <div className={styles.row}>
                 <div className={styles.content}>
                   <p className={styles.number}>04</p>
@@ -132,18 +142,20 @@ export default function Flow() {
             </li>
           </ul>
         </div>
-        <div className="splide__arrows">
-          <button
-            type="button"
-            className="splide__arrow splide__arrow--prev"
-          ></button>
-          <button
-            type="button"
-            className="splide__arrow splide__arrow--next"
-          ></button>
-        </div>
-        <div className="my-carousel-progress">
-          <div className="my-carousel-progress-bar"></div>
+        <div className={styles.controls}>
+          <div className="my-carousel-progress">
+            <div ref={progressBarRef} className="my-carousel-progress-bar"></div>
+          </div>
+          <div className="splide__arrows">
+            <button
+              type="button"
+              className="splide__arrow splide__arrow--prev"
+            ></button>
+            <button
+              type="button"
+              className="splide__arrow splide__arrow--next"
+            ></button>
+          </div>
         </div>
       </div>
     </div>

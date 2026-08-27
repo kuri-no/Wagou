@@ -9,7 +9,7 @@
   }
   .icon {
     position: absolute;
-    bottom: min(vwcalc(65), rem(65));
+    bottom: min(vwcalc(-40), rem(-40));
     left: min(vwcalc(50), rem(50));
     z-index: 10;
     width: min(vwcalc(229), rem(229));
@@ -18,13 +18,17 @@
       width: 100%;
     }
   }
-  .slide {
+  :global(.splide) {
+    margin: min(vwcalc(60), rem(60)) 0 0 15.3vw;
+  }
+  :global(.splide__slide) {
     aspect-ratio: 643 / 357;
     height: 100%;
   }
   .row {
     display: grid;
     grid-template-columns: auto minmax(auto, rem(250));
+    align-items: center;
     column-gap: rem(12);
     padding: rem(12) rem(14) rem(12) rem(22);
     background-color: #fff;
@@ -48,7 +52,7 @@
           aspect-ratio: 1;
           background-color: var(--color-primary);
           border-radius: 50%;
-          content: "";
+          content: '';
         }
       }
       .label {
@@ -57,7 +61,7 @@
         line-height: 1.8;
         letter-spacing: 0.12em;
         font-weight: 700;
-        border-bottom: rem(1) solid #C9C9C9;
+        border-bottom: rem(1) solid #c9c9c9;
       }
       .detail {
         font-size: clamp(rem(13), vwcalc(15), rem(15));
@@ -68,6 +72,63 @@
       width: rem(250);
       img {
         width: 100%;
+      }
+    }
+  }
+  .controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: rem(20);
+    width: 100%;
+    max-width: rem(1050);
+    margin-top: rem(32);
+    :global(.my-carousel-progress) {
+      width: rem(500);
+      height: rem(9);
+      background-color: #fff;
+      border-radius: var(--round-lg);
+      box-shadow: var(--box-shadow-base);
+      overflow: hidden;
+    }
+    :global(.my-carousel-progress-bar) {
+      width: 0;
+      height: 100%;
+      background-color: var(--color-primary);
+      border-radius: inherit;
+      transition: width var(--hover-base-duration) var(--hover-base-easing);
+    }
+    :global(.splide__arrows) {
+      display: flex;
+      column-gap: rem(10);
+    }
+    :global(.splide__arrow) {
+      display: grid;
+      place-items: center;
+      width: rem(36);
+      aspect-ratio: 1;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: opacity var(--hover-base-duration) var(--hover-base-easing);
+      @include hover {
+        opacity: 0.7;
+      }
+      &::before {
+        width: rem(11);
+        height: rem(14);
+        background-color: #fff;
+        @include icon(arrow);
+        content: '';
+      }
+      &:global(.splide__arrow--prev) {
+        &::before {
+          rotate: 180deg;
+        }
+      }
+      &:disabled {
+        opacity: 0.7;
+        pointer-events: none;
       }
     }
   }
