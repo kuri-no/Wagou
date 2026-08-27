@@ -23,12 +23,21 @@ export default function Flow() {
 
     const flowSlider = new Splide(sliderRef.current, {
       rewind: false,
-      perPage: 1.85,
-      gap: '36px',
+      perPage: 1,
+      gap: '2.5vw',
+      fixedWidth: 'clamp(540px, 44.7vw, 643px)',
+      padding: { left: '15.3%', right: '15.3%' },
       arrows: true,
       autoplay: false,
       speed: 1500,
       pauseOnHover: false,
+      breakpoints: {
+        768: {
+          gap: '3vw',
+          fixedWidth: '70.7vw',
+          padding: { left: '6.4%', right: '6.4%' },
+        },
+      },
     }).mount();
 
     flowSlider.on('mounted move', () => {
@@ -49,9 +58,13 @@ export default function Flow() {
       <Content>
         <Heading label="煎茶ができるまで" />
         <p className={styles.lead}>
-          農薬不使用有機栽培による、人体にも環境にも優しいお茶づくりをしています。
+          農薬不使用有機栽培による、
+          <br className="_md" />
+          人体にも環境にも優しいお茶づくりをしています。
           <br />
-          茶畑を営むことで山の緑や豊かな水源を守ることにも繋がると考えています。
+          茶畑を営むことで山の緑や豊かな水源を守ることにも
+          <br className="_md" />
+          繋がると考えています。
         </p>
       </Content>
       <div className={styles.icon}>
@@ -144,7 +157,10 @@ export default function Flow() {
         </div>
         <div className={styles.controls}>
           <div className="my-carousel-progress">
-            <div ref={progressBarRef} className="my-carousel-progress-bar"></div>
+            <div
+              ref={progressBarRef}
+              className="my-carousel-progress-bar"
+            ></div>
           </div>
           <div className="splide__arrows">
             <button

@@ -1,7 +1,7 @@
 .access {
   position: relative;
   z-index: 10;
-  margin-top: 20.8vw;
+  margin-top: min(vwcalc(150), rem(150));
   @include mq {
     margin-top: rem(280);
   }
