@@ -1,0 +1,36 @@
+.news {
+  position: relative;
+  z-index: 10;
+  margin-top: min(vwcalc(150), rem(150));
+  @include mq {
+    margin-top: rem(150);
+  }
+  .body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: min(vwcalc(24), rem(24));
+    margin-block: min(vwcalc(60), rem(60));
+    @include mq {
+      grid-template-columns: 1fr;
+      row-gap: rem(36);
+      margin: rem(50) rem(8) rem(50);
+    }
+  }
+  .bg {
+    position: absolute;
+    bottom: -18vw;
+    left: -10.9vw;
+    z-index: -1;
+    width: 40vw;
+    aspect-ratio: 1;
+    opacity: 0.2;
+    @include mq {
+      bottom: rem(-300);
+      left: rem(-112);
+      width: rem(420);
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

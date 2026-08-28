@@ -1,0 +1,67 @@
+.access {
+  position: relative;
+  z-index: 10;
+  margin-top: min(vwcalc(150), rem(150));
+  @include mq {
+    margin-top: rem(280);
+  }
+  .body {
+    display: grid;
+    grid-template-columns: minmax(auto, rem(540)) auto;
+    align-items: center;
+    column-gap: min(vwcalc(52), rem(52));
+    width: 100%;
+    max-width: min(vwcalc(800), rem(800));
+    margin-inline: auto;
+    @include mq {
+      grid-template-columns: 1fr;
+      row-gap: rem(34);
+      width: 91vw;
+      margin: 0 calc(50% - 45.5vw);
+      max-width: initial;
+    }
+    .map {
+      aspect-ratio: 540 / 337;
+      @include mq {
+        aspect-ratio: 400 / 250;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: var(--round-lg);
+      }
+    }
+    .content {
+      .label {
+        font-size: clamp(rem(16), vwcalc(20), rem(20));
+        line-height: 1.3;
+        font-weight: 700;
+        @include mq {
+          font-size: rem(20);
+        }
+      }
+      .detail {
+        margin-top: min(vwcalc(18), rem(18));
+        font-size: clamp(rem(12), vwcalc(15), rem(15));
+        line-height: 1.8;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        @include mq {
+          margin-top: rem(18);
+          font-size: rem(15);
+        }
+      }
+      .tel {
+        margin-block: min(vwcalc(12), rem(12)) min(vwcalc(26), rem(26));
+        font-size: clamp(rem(18), vwcalc(22), rem(22));
+        line-height: 1.2;
+        letter-spacing: 0.09em;
+        @include mq {
+          margin-block: rem(12) rem(26);
+          font-size: rem(22);
+        }
+      }
+    }
+  }
+}

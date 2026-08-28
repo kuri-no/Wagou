@@ -1,0 +1,112 @@
+.about {
+  position: relative;
+  @include mq {
+    margin-top: rem(50);
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: rem(480);
+    margin-inline: auto;
+    @include mq {
+      max-width: rem(396);
+    }
+  }
+  .title {
+    font-size: clamp(rem(18), vwcalc(26), rem(26));
+    line-height: 1.4;
+    font-weight: 700;
+    color: var(--color-primary);
+    @include mq {
+      font-size: rem(26);
+    }
+  }
+  .lead {
+    margin-top: min(vwcalc(46), rem(46));
+    text-align: center;
+    @include mq {
+      margin-top: rem(40);
+    }
+    p {
+      font-size: clamp(rem(11), vwcalc(16), rem(16));
+      line-height: 2.3;
+      font-weight: 700;
+      @include mq {
+        font-size: rem(15);
+        line-height: 2.4;
+      }
+      & + p {
+        margin-top: 2.3em;
+        @include mq {
+          margin-top: 2.4em;
+        }
+      }
+    }
+  }
+  .icon {
+    margin-top: min(vwcalc(40), rem(40));
+    width: min(vwcalc(190), rem(190));
+    @include mq {
+      margin-top: rem(36);
+      width: rem(190);
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .deco {
+    position: absolute;
+    img {
+      width: 100%;
+    }
+    &_1 {
+      top: max(vwcalc(-14, 1440), rem(-14));
+      left: 0;
+      width: min(vwcalc(556, 1440), rem(556));
+      height: min(vwcalc(610, 1440), rem(610));
+      @include mq {
+        top: revert;
+        bottom: rem(-396);
+        left: rem(-92);
+        z-index: 1;
+        width: rem(410);
+        height: rem(438);
+      }
+    }
+    &_2 {
+      top: max(vwcalc(-14, 1440), rem(-14));
+      right: 0;
+      width: min(vwcalc(639, 1440), rem(639));
+      height: min(vwcalc(645, 1440), rem(645));
+      @include mq {
+        top: revert;
+        bottom: rem(-554);
+        right: rem(-188);
+        width: rem(639);
+        height: rem(645);
+      }
+    }
+    &_3 {
+      bottom: max(vwcalc(-118, 1440), rem(-118));
+      left: 0;
+      width: min(vwcalc(516, 1440), rem(516));
+      height: min(vwcalc(653, 1440), rem(653));
+      @include mq {
+        display: none;
+      }
+    }
+    &_4 {
+      bottom: max(vwcalc(-118, 1440), rem(-118));
+      right: 0;
+      width: min(vwcalc(597, 1440), rem(597));
+      height: min(vwcalc(652, 1440), rem(652));
+      @include mq {
+        display: none;
+      }
+    }
+  }
+}
