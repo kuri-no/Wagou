@@ -37,19 +37,18 @@
       margin-top: rem(25);
     }
   }
-  :global(.splide__slide) {
-    height: 100%;
-  }
   .row {
     display: grid;
     grid-template-columns: auto minmax(auto, rem(250));
     align-items: center;
+    height: 100%;
     column-gap: rem(12);
     padding: rem(12) rem(14) rem(12) rem(22);
     background-color: #fff;
     border-radius: rem(60) rem(10) rem(60) rem(10);
     @include mq {
       grid-template-columns: 1fr;
+      align-content: start;
       padding: rem(12);
     }
     .content {

@@ -73,14 +73,12 @@ export default function Modal({ src, label, detail }: ModalProps) {
               </Fragment>
             ))}
           </p>
-          <div className={styles.foot}>
-            <Button
-              text="閉じる"
-              variant="outline"
-              className={styles.closeButton}
-              onClick={closeDialog}
-            />
-          </div>
+          <Button
+            text="閉じる"
+            variant="outline"
+            className={styles.closeButton}
+            onClick={closeDialog}
+          />
         </div>
       </dialog>
     </li>

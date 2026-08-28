@@ -80,14 +80,20 @@
           margin-top: rem(14);
         }
       }
-      .foot {
+      .closeButton {
         position: relative;
         max-width: rem(146);
         min-height: rem(36);
         margin: rem(90) 0 0 auto;
-        &:has(.closeButton:hover) {
-          &::after {
-            background-color: #fff;
+        padding: rem(5) rem(54) rem(5) rem(32);
+        font-size: rem(16);
+        letter-spacing: 0.12em;
+        font-weight: 400;
+        @media (any-hover: hover) {
+          &:hover {
+            &::after {
+              background-color: #fff;
+            }
           }
         }
         &::after {
@@ -103,14 +109,6 @@
           transition: background-color var(--hover-base-duration) var(--hover-base-easing);
           pointer-events: none;
           content: '';
-        }
-        .closeButton {
-          max-width: 100%;
-          min-height: 100%;
-          padding: rem(5) rem(54) rem(5) rem(32);
-          font-size: rem(16);
-          letter-spacing: 0.12em;
-          font-weight: 400;
         }
       }
     }
