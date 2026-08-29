@@ -1,6 +1,6 @@
 import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
-import styles from './Card.module.scss';
+import styles from './NewsCard.module.scss';
 
 type CardProps = {
   src: string | StaticImageData

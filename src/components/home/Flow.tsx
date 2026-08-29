@@ -49,9 +49,8 @@ export default function Flow() {
 
     const flowSlider = new Splide(sliderRef.current, {
       rewind: false,
-      perPage: 1,
-      gap: '2.5vw',
       fixedWidth: 'clamp(540px, 44.7vw, 643px)',
+      gap: '2.5vw',
       padding: { left: '15.3%', right: '15.3%' },
       arrows: true,
       autoplay: false,
@@ -59,8 +58,8 @@ export default function Flow() {
       pauseOnHover: false,
       breakpoints: {
         768: {
-          gap: '3vw',
           fixedWidth: '70.7vw',
+          gap: '3vw',
           padding: { left: '6.4%', right: '6.4%' },
         },
       },
