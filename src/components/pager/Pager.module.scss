@@ -1,0 +1,46 @@
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: rem(6);
+  margin: min(vwcalc(68), rem(68)) auto 0;
+  @include mq {
+    margin: rem(60) auto 0;
+  }
+  .item {
+    display: grid;
+    place-items: center;
+    width: rem(40);
+    aspect-ratio: 1;
+    font-size: rem(14);
+    color: var(--color-primary);
+    border: rem(1) solid var(--color-primary);
+    transition-property: color, background-color;
+    transition: var(--hover-base-duration) var(--hover-base-easing);
+    @media (any-hover: hover) {
+      &:hover {
+        color: #fff;
+        background-color: var(--color-primary);
+      }
+    }
+    &.current {
+      color: #fff;
+      background-color: var(--color-primary);
+    }
+    &.arrow {
+      display: grid;
+      place-items: center;
+      border: none;
+      &::before {
+        width: rem(12);
+        aspect-ratio: 1;
+        background-color: currentColor;
+        @include icon(arrow);
+        content: "";
+      }
+    }
+    &.prev {
+      rotate: 180deg;
+    }
+  }
+}

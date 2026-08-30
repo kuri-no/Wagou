@@ -1,0 +1,40 @@
+.breadcrumb {
+  position: relative;
+  margin-top: min(vwcalc(90), rem(90));
+  font-size: rem(14);
+  line-height: 1.8;
+  white-space: nowrap;
+  overflow-x: auto;
+  @include mq {
+    margin-top: rem(72);
+  }
+  .item {
+    display: inline;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: underline;
+    & + .item {
+      &::before {
+        display: inline-block;
+        width: rem(10);
+        height: rem(11);
+        margin-inline: rem(10);
+        background-color: currentColor;
+        @include icon(arrow);
+        content: '';
+        vertical-align: baseline;
+      }
+    }
+    &:not(:last-child) {
+      text-decoration: none;
+    }
+    &:last-child {
+      .link {
+        pointer-events: none;
+      }
+    }
+  }
+  .link {
+    @include hover-fade;
+  }
+}

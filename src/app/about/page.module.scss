@@ -1,0 +1,68 @@
+.about {
+  > :where(* + *) {
+    margin-top: min(vwcalc(40), rem(40));
+    @include mq {
+      margin-top: rem(36);
+    }
+  }
+  h2 {
+    position: relative;
+    padding: min(vwcalc(13), rem(13)) min(vwcalc(20), rem(20));
+    background-color: var(--color-gray2);
+    @include heading2;
+    @include mq {
+      padding: rem(13) rem(20);
+    }
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: min(vwcalc(5), rem(5));
+      height: 100%;
+      background-color: var(--color-primary);
+      content: '';
+      @include mq {
+        width: rem(5);
+      }
+    }
+  }
+  h3 {
+    position: relative;
+    width: fit-content;
+    padding-inline: min(vwcalc(64), rem(64));
+    @include heading3;
+    @include mq {
+      padding-inline: rem(64);
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      width: min(vwcalc(50), rem(50));
+      height: rem(1);
+      background-color: currentColor;
+      content: '';
+      @include mq {
+        width: rem(50);
+      }
+    }
+    &::before {
+      left: 0;
+    }
+    &::after {
+      right: 0;
+    }
+  }
+  .image {
+    width: 100%;
+    max-width: min(vwcalc(600), rem(600));
+    margin-inline: auto;
+    @include mq {
+      max-width: 100%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

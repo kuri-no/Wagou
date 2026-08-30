@@ -1,0 +1,6 @@
+.hero {
+  padding-block: min(vwcalc(90), rem(90)) min(vwcalc(72), rem(72));
+  @include mq {
+    padding-block: rem(36) rem(60);
+  }
+}

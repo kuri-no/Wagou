@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import logoBg from '@/assets/common/logo-bg.png';
-import dummy1 from '@/assets/news/dummy_1.png';
-import dummy2 from '@/assets/news/dummy_2.png';
-import dummy3 from '@/assets/news/dummy_3.png';
+import dummy1 from '@/assets/news/dummy_1.jpg';
+import dummy2 from '@/assets/news/dummy_2.jpg';
+import dummy3 from '@/assets/news/dummy_3.jpg';
 import Button from '@/components/button/Button';
-import Card from '@/components/card/Card';
+import NewsCard from '@/components/card/NewsCard';
 import Heading from '@/components/heading/Heading';
 import Content from '@/components/layout/Content';
 import styles from './News.module.scss';
@@ -55,7 +55,7 @@ export default function News() {
         <Heading label="日々のこと" />
         <div className={styles.body}>
           {dummyItems.map(item => (
-            <Card
+            <NewsCard
               key={item.id}
               src={item.src}
               id={item.id}

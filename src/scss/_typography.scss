@@ -1,6 +1,6 @@
 @use '@/scss/mixin' as *;
 
-@mixin heading1 {
+@mixin pageHeading {
   font-size: clamp(rem(18), vwcalc(26), rem(26));
   line-height: 1;
   letter-spacing: 0.12em;
@@ -8,6 +8,16 @@
   @include mq {
     font-size: rem(18);
     line-height: 1.4;
+  }
+}
+
+@mixin heading1 {
+  font-size: clamp(rem(18), vwcalc(26), rem(26));
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  @include mq {
+    font-size: rem(26);
   }
 }
 
