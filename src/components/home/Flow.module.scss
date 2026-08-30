@@ -45,7 +45,7 @@
     column-gap: rem(12);
     padding: rem(12) rem(14) rem(12) rem(22);
     background-color: #fff;
-    border-radius: rem(60) rem(10) rem(60) rem(10);
+    border-radius: var(--round-image);
     @include mq {
       grid-template-columns: 1fr;
       align-content: start;
@@ -110,6 +110,7 @@
       }
       img {
         width: 100%;
+        border-radius: var(--round-image);
       }
     }
   }

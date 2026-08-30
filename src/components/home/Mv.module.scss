@@ -113,7 +113,7 @@
       padding: 0;
       border: none;
       border-radius: 50%;
-      background-color: #b6b9b0;
+      background-color: var(--color-gray);
       cursor: pointer;
       &:global(.is-active) {
         background-color: var(--color-primary);

@@ -15,15 +15,17 @@ type CardProps = {
 
 export default function Card({ src, id, title, date, category }: CardProps) {
   return (
-    <Link href={`/news/${id}/`} className={styles.card}>
-      <div className={styles.thumbnail}>
-        <Image src={src} alt="" width={364} height={242} loading="lazy" />
-      </div>
-      <div className={styles.meta}>
-        <p className={styles.category}>{category[0]?.name}</p>
-        <p className={styles.date}>{date}</p>
-        <h3 className={styles.title}>{title}</h3>
-      </div>
-    </Link>
+    <article className={styles.card}>
+      <Link href={`/news/${id}/`} className={styles.inner}>
+        <div className={styles.thumbnail}>
+          <Image src={src} alt="" width={364} height={242} loading="lazy" />
+        </div>
+        <div className={styles.meta}>
+          <p className={styles.category}>{category[0]?.name}</p>
+          <time className={styles.date}>{date}</time>
+          <h3 className={styles.title}>{title}</h3>
+        </div>
+      </Link>
+    </article>
   );
 }

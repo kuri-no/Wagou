@@ -3,4 +3,7 @@
   padding-block: var(--header-height) rem(40);
   background-color: var(--color-base-bg);
   overflow: hidden;
+  @include mq {
+    padding-block: var(--header-height) rem(24);
+  }
 }

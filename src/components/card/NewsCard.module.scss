@@ -1,11 +1,14 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  @media (any-hover: hover) {
-    &:hover {
-      .thumbnail {
-        img {
-          scale: 1.1;
+  .inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    @media (any-hover: hover) {
+      &:hover {
+        .thumbnail {
+          img {
+            scale: 1.1;
+          }
         }
       }
     }
@@ -51,6 +54,8 @@
       border-radius: var(--round-base) var(--round-base) 0 0;
     }
     .date {
+      display: block;
+      width: fit-content;
       font-size: rem(13);
       line-height: 1;
       letter-spacing: 0.07em;
