@@ -1,0 +1,18 @@
+.form {
+  position: relative;
+  z-index: 50;
+  .row {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(8);
+    & + .row {
+      margin-top: rem(20);
+    }
+  }
+  .submit {
+    margin-top: min(vwcalc(80), rem(80));
+    @include mq {
+      margin-top: rem(60);
+    }
+  }
+}

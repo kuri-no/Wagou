@@ -99,7 +99,12 @@
           font-size: clamp(rem(12), vwcalc(14), rem(14));
           line-height: 2.8;
           font-weight: 700;
-          @include hover-fade;
+          transition: color var(--hover-base-duration) var(--hover-base-easing);
+          @media (any-hover: hover) {
+            &:hover {
+              color: var(--color-accent);
+            }
+          }
           @include mq {
             font-size: rem(14);
           }
@@ -110,7 +115,6 @@
       margin-top: min(vwcalc(14), rem(14));
       font-size: clamp(rem(12), vwcalc(14), rem(14));
       line-height: 1.6;
-      @include hover-fade;
       @include mq {
         margin-top: rem(18);
         font-size: rem(14);

@@ -1,0 +1,12 @@
+.input {
+  width: 100%;
+  height: rem(41);
+  padding: rem(8) rem(12);
+  font-weight: 700;
+  background-color: #fff;
+  border: rem(1) solid var(--color-primary);
+  border-radius: rem(2);
+  &:focus {
+    outline: rem(1) solid var(--color-primary);
+  }
+}

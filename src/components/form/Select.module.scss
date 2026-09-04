@@ -1,0 +1,16 @@
+.select {
+  width: 100%;
+  height: rem(41);
+  padding: rem(8) rem(12);
+  font-weight: 700;
+  background-color: #fff;
+  border: rem(1) solid var(--color-primary);
+  border-radius: rem(2);
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgMTQgOCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTEzLjMzMiAwLjM3Mzk2Mkw3LjA5MjAzIDYuMzczOTZMMC4zMzIwMzEgMC4zNzM5NjIiIHN0cm9rZT0iIzA0NzgzNiIvPjwvc3ZnPg==');
+  background-repeat: no-repeat;
+  background-size: rem(14) rem(8);
+  background-position: right rem(12) center;
+  &:focus {
+    outline: rem(1) solid var(--color-primary);
+  }
+}

@@ -1,0 +1,24 @@
+.label {
+  display: flex;
+  align-items: center;
+  column-gap: rem(8);
+  .text {
+    font-weight: 700;
+  }
+  .tag {
+    display: grid;
+    place-items: center;
+    padding: rem(2) rem(6);
+    height: rem(16);
+    font-size: rem(12);
+    line-height: 1;
+    font-weight: 700;
+    color: #fff;
+    &.isRequired {
+      background-color: var(--color-primary);
+    }
+    &.isOptional {
+      background-color: var(--color-gray);
+    }
+  }
+}
