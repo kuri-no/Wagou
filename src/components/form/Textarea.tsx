@@ -1,23 +1,22 @@
 import styles from './Textarea.module.scss';
 
 type TextareaProps = {
-  id?: string;
-  type: string;
+  id: string;
   name: string;
   required?: boolean;
 };
 
 export default function Textarea({
-  id = '',
+  id,
   name,
-  ...restOfProps
+  required = false,
 }: TextareaProps) {
   return (
     <textarea
-      className={styles.textarea}
       id={id}
       name={name}
-      {...restOfProps}
+      className={styles.textarea}
+      required={required}
     />
   );
 }

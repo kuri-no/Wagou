@@ -11,49 +11,58 @@ export default function Form() {
   return (
     <form className={styles.form} action="" method="post">
       <div className={styles.row}>
-        <Label text="お名前" id="your-name" />
-        <Input id="your-name" type="text" name="お名前" required={true} />
-      </div>
-      <div className={styles.row}>
-        <Label text="メールアドレス" id="your-email" />
+        <Label htmlFor="your-name" text="お名前" />
         <Input
-          id="your-email"
-          type="email"
-          name="メールアドレス"
-          required={true}
+          type="text"
+          id="your-name"
+          name="お名前"
+          autoComplete="name"
+          required
         />
       </div>
       <div className={styles.row}>
-        <Label text="電話番号" id="your-tel" />
-        <Input id="your-tel" type="tel" name="電話番号" required={true} />
+        <Label htmlFor="your-email" text="メールアドレス" />
+        <Input
+          type="email"
+          id="your-email"
+          name="メールアドレス"
+          autoComplete="email"
+          required
+        />
       </div>
       <div className={styles.row}>
-        <Label text="予約希望日" id="your-date" />
-        <Input id="your-date" type="text" name="予約希望日" required={true} />
+        <Label htmlFor="your-tel" text="電話番号" />
+        <Input
+          type="tel"
+          id="your-tel"
+          name="電話番号"
+          autoComplete="tel"
+          required
+        />
       </div>
       <div className={styles.row}>
-        <Label text="お席の希望" id="your-seat" />
+        <Label htmlFor="your-date" text="予約希望日" />
+        <Input
+          type="text"
+          id="your-date"
+          name="予約希望日"
+          autoComplete="off"
+          required
+        />
+      </div>
+      <div className={styles.row}>
+        <Label htmlFor="your-seat" text="お席の希望" />
         <Select
           id="your-seat"
           name="お席の希望"
-          required={true}
-          options={[
-            '選択してください',
-            'カウンター席',
-            'テーブル席',
-            '個室',
-            '希望なし',
-          ]}
+          placeholder="選択してください"
+          required
+          options={['カウンター席', 'テーブル席', '個室', '希望なし']}
         />
       </div>
       <div className={styles.row}>
-        <Label text="備考欄" id="your-message" isRequired={false} />
-        <Textarea
-          id="your-message"
-          type="textarea"
-          name="備考欄"
-          required={true}
-        />
+        <Label htmlFor="your-message" text="備考欄" required={false} />
+        <Textarea id="your-message" name="備考欄" required={false} />
       </div>
       <Button type="submit" text="送信する" className={styles.submit} center />
     </form>

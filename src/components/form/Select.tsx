@@ -1,20 +1,33 @@
 import styles from './Select.module.scss';
 
 type SelectProps = {
-  id?: string;
+  id: string;
   name: string;
+  placeholder?: string;
   required?: boolean;
   options: string[];
 };
 
 export default function Select({
-  id = '',
+  id,
   name,
+  placeholder,
+  required = false,
   options,
-  ...restOfProps
 }: SelectProps) {
   return (
-    <select className={styles.select} id={id} name={name} {...restOfProps}>
+    <select
+      id={id}
+      name={name}
+      className={styles.select}
+      defaultValue={placeholder ? '' : undefined}
+      required={required}
+    >
+      {placeholder && (
+        <option value="" disabled>
+          {placeholder}
+        </option>
+      )}
       {options.map(option => (
         <option key={option} value={option}>
           {option}

@@ -1,25 +1,28 @@
 import styles from './Input.module.scss';
 
 type InputProps = {
-  id?: string;
-  type: string;
+  type: 'text' | 'email' | 'tel';
+  id: string;
   name: string;
+  autoComplete: string;
   required?: boolean;
 };
 
 export default function Input({
-  id = '',
   type,
+  id,
   name,
-  ...restOfProps
+  autoComplete,
+  required = false,
 }: InputProps) {
   return (
     <input
-      className={styles.input}
-      id={id}
       type={type}
+      id={id}
       name={name}
-      {...restOfProps}
+      className={styles.input}
+      autoComplete={autoComplete}
+      required={required}
     />
   );
 }
