@@ -9,7 +9,17 @@
       margin-top: rem(20);
     }
   }
+  .error {
+    font-size: rem(14);
+    line-height: 1.8;
+    font-weight: 700;
+    color: #FF0000;
+  }
   .submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: rem(8);
     margin-top: min(vwcalc(80), rem(80));
     @include mq {
       margin-top: rem(60);

@@ -19,6 +19,7 @@ export default function Form() {
           autoComplete="name"
           required
         />
+        <p className={styles.error}>必須の入力項目です。</p>
       </div>
       <div className={styles.row}>
         <Label htmlFor="your-email" text="メールアドレス" />
@@ -29,6 +30,7 @@ export default function Form() {
           autoComplete="email"
           required
         />
+        <p className={styles.error}>メールアドレスの形式と異なります。</p>
       </div>
       <div className={styles.row}>
         <Label htmlFor="your-tel" text="電話番号" />
@@ -39,6 +41,7 @@ export default function Form() {
           autoComplete="tel"
           required
         />
+        <p className={styles.error}>電話番号の形式と異なります。</p>
       </div>
       <div className={styles.row}>
         <Label htmlFor="your-date" text="予約希望日" />
@@ -49,6 +52,7 @@ export default function Form() {
           autoComplete="off"
           required
         />
+        <p className={styles.error}>必須の入力項目です。</p>
       </div>
       <div className={styles.row}>
         <Label htmlFor="your-seat" text="お席の希望" />
@@ -59,12 +63,16 @@ export default function Form() {
           required
           options={['カウンター席', 'テーブル席', '個室', '希望なし']}
         />
+        <p className={styles.error}>必須の入力項目です。</p>
       </div>
       <div className={styles.row}>
         <Label htmlFor="your-message" text="備考欄" required={false} />
         <Textarea id="your-message" name="備考欄" required={false} />
       </div>
-      <Button type="submit" text="送信する" className={styles.submit} center />
+      <div className={styles.submit}>
+        <Button type="submit" text="送信する" center />
+        <p className={styles.error}>入力内容に誤りがあります。</p>
+      </div>
     </form>
   );
 }
