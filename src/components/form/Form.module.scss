@@ -1,0 +1,47 @@
+.alert {
+  font-weight: 700;
+  text-align: center;
+}
+
+.form {
+  .row {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(8);
+    & + .row {
+      margin-top: rem(20);
+    }
+    &:has(:user-invalid) {
+      .error {
+        display: block;
+      }
+    }
+    :user-invalid {
+      border-color: #ff0000;
+    }
+  }
+  .error {
+    display: none;
+    font-size: rem(14);
+    line-height: 1.8;
+    font-weight: 700;
+    color: #ff0000;
+  }
+  .submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: rem(8);
+    margin-top: min(vwcalc(80), rem(80));
+    @include mq {
+      margin-top: rem(60);
+    }
+  }
+  &:has(:user-invalid) {
+    .submit {
+      .error {
+        display: block;
+      }
+    }
+  }
+}

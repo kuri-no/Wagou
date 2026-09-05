@@ -1,0 +1,29 @@
+.thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: rem(380);
+  margin-inline: auto;
+  .label {
+    font-weight: 700;
+    text-align: center;
+  }
+  .detail {
+    margin-top: rem(15);
+    text-align: center;
+    p + p {
+      margin-top: rem(15);
+    }
+  }
+  .icon {
+    width: rem(200);
+    margin-top: rem(50);
+    @include mq {
+      width: rem(170);
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.reservation {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: rem(380);
+  min-height: min(vwcalc(480), rem(480));
+  margin-inline: auto;
+  @include mq {
+    max-width: 100%;
+    min-height: rem(360);
+  }
+  .bg {
+    position: absolute;
+    bottom: max(vwcalc(-100), rem(-100));
+    right: max(vwcalc(-428), rem(-428));
+    z-index: -1;
+    width: min(vwcalc(614), rem(614));
+    aspect-ratio: 1;
+    opacity: 0.2;
+    @include mq {
+      bottom: revert;
+      top: rem(-120);
+      right: rem(-145);
+      width: rem(474);
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

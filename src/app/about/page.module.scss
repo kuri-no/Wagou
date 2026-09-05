@@ -5,6 +5,19 @@
       margin-top: rem(36);
     }
   }
+  > p:not([class]) {
+    margin-top: min(vwcalc(28), rem(28));
+    @include mq {
+      margin-top: rem(24);
+    }
+  }
+  .lead {
+    font-weight: 700;
+    text-align: center;
+    @include mq {
+      text-align: left;
+    }
+  }
   h2 {
     position: relative;
     padding: min(vwcalc(13), rem(13)) min(vwcalc(20), rem(20));
