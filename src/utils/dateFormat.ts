@@ -6,3 +6,7 @@ export const formatDate = (date: string, formatStr = 'YYYY.MM.DD') => {
   const d = new Date(date);
   return format(d, formatStr);
 };
+
+export const getTodayDateInputValue = (timeZone = 'Asia/Tokyo') => {
+  return new Intl.DateTimeFormat('en-CA', { timeZone }).format(new Date());
+};
