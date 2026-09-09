@@ -4,12 +4,10 @@ import Heading from '@/components/heading/Heading';
 import Hero from '@/components/hero/Hero';
 import Content from '@/components/layout/Content';
 import Pager from '@/components/pager/Pager';
-import { getPostList } from '@/lib/microcms';
+import { getAllPost } from '@/lib/microcms';
 import type { NewsItem } from '@/types/News';
 import { formatDate } from '@/utils/dateFormat';
 import styles from './page.module.scss';
-
-const PER_PAGE = 9;
 
 const BreadcrumbItems = [
   {
@@ -23,14 +21,9 @@ const BreadcrumbItems = [
 ];
 
 export default async function News() {
-  const { contents: newsList, totalCount } = await getPostList<NewsItem>(
-    'news',
-    PER_PAGE,
-    1,
-    { orders: '-publishedAt' },
-  );
-
-  const totalPages = Math.ceil(totalCount / PER_PAGE);
+  const newsList = await getAllPost<NewsItem>('news', {
+    orders: '-publishedAt',
+  });
 
   return (
     <>
@@ -52,7 +45,7 @@ export default async function News() {
           ))}
         </div>
 
-        <Pager currentPage={1} totalPages={totalPages} basePath="/news" />
+        <Pager />
 
         <Breadcrumb items={BreadcrumbItems} />
       </Content>

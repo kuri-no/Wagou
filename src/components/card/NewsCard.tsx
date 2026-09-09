@@ -3,17 +3,20 @@ import Link from 'next/link';
 import styles from './NewsCard.module.scss';
 
 type CardProps = {
-  src: string | StaticImageData
-  id: number;
+  src: string | StaticImageData;
+  id: string;
   title: string;
   date: string;
-  category: {
-    id: number;
-    name: string;
-  }[];
+  categoryName: string;
 };
 
-export default function Card({ src, id, title, date, category }: CardProps) {
+export default function Card({
+  src,
+  id,
+  title,
+  date,
+  categoryName,
+}: CardProps) {
   return (
     <article className={styles.card}>
       <Link href={`/news/${id}/`} className={styles.inner}>
@@ -21,7 +24,7 @@ export default function Card({ src, id, title, date, category }: CardProps) {
           <Image src={src} alt="" width={364} height={242} loading="lazy" />
         </div>
         <div className={styles.meta}>
-          <p className={styles.category}>{category[0]?.name}</p>
+          <p className={styles.category}>{categoryName}</p>
           <time className={styles.date}>{date}</time>
           <h3 className={styles.title}>{title}</h3>
         </div>
