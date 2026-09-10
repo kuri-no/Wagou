@@ -68,6 +68,7 @@ export default function Header() {
       ref={headerRef}
       className={`${styles.header} ${menuOpen ? styles.menuOpen : ''}`}
     >
+      <div id="backdrop" aria-hidden={!menuOpen} onClick={closeMenu}></div>
       <div className={styles.inner}>
         {pathname !== '/' && (
           <Link href="/" className={styles.logo}>

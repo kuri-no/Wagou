@@ -1,4 +1,6 @@
 .trigger {
+  position: relative;
+  z-index: var(--z-index-menu);
   width: rem(30);
   height: rem(16);
   cursor: pointer;
