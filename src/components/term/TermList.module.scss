@@ -1,0 +1,36 @@
+.termList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: rem(2);
+  width: 100%;
+  max-width: 80%;
+  margin-inline: auto;
+  @include mq {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+  .link {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-height: rem(56);
+    padding: rem(8);
+    font-size: rem(14);
+    font-weight: 700;
+    color: var(--color-primary);
+    background-color: var(--color-base-bg);
+    border: rem(1) solid var(--color-primary);
+    transition: var(--hover-base-duration) var(--hover-base-easing);
+    transition-property: color, background-color, border-color;
+    @media (any-hover: hover) {
+      &:hover {
+        color: #fff;
+        background-color: var(--color-primary);
+      }
+    }
+    &.isCurrent {
+      color: #fff;
+      background-color: var(--color-primary);
+    }
+  }
+}

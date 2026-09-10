@@ -33,8 +33,9 @@
         top: rem(-22);
         left: rem(13);
       }
-      .link {
-        .logo {
+      .logo {
+        .link {
+          display: block;
           width: min(vwcalc(130), rem(130));
           aspect-ratio: 1;
           @include hover-fade;

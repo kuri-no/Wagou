@@ -9,12 +9,6 @@
     margin-top: rem(36);
   }
   .body {
-    > :where(* + *) {
-      margin-top: min(vwcalc(30), rem(30));
-      @include mq {
-        margin-top: rem(26);
-      }
-    }
     .thumbnail {
       aspect-ratio: 600 / 400;
       @include mq {
@@ -31,7 +25,11 @@
       display: flex;
       align-items: center;
       column-gap: rem(10);
-      .category {
+      margin-top: min(vwcalc(30), rem(30));
+      @include mq {
+        margin-top: rem(26);
+      }
+      .tag {
         display: grid;
         place-items: center;
         width: fit-content;
@@ -48,26 +46,46 @@
       .date {
         font-size: rem(14);
         line-height: 1.7;
-        font-weight: 700;
       }
     }
-    h1 {
+    .title {
       @include heading1;
-    }
-    h2 {
-      padding: rem(12) rem(8);
-      border-bottom: rem(1) solid var(--color-accent);
-      @include heading2;
-    }
-    h3 {
-      padding: rem(6) rem(12);
-      background-color: var(--color-gray2);
-      @include heading3;
-    }
-    .image {
-      aspect-ratio: 600 / 400;
+      margin-top: min(vwcalc(30), rem(30));
       @include mq {
-        aspect-ratio: 380 / 253;
+        margin-top: rem(26);
+      }
+    }
+    .content {
+      > :where(*) {
+        margin-top: min(vwcalc(30), rem(30));
+        @include mq {
+          margin-top: rem(26);
+        }
+      }
+      h2 {
+        padding: rem(12) rem(8);
+        border-bottom: rem(1) solid var(--color-accent);
+        @include heading2;
+      }
+      h3 {
+        padding: rem(6) rem(12);
+        background-color: var(--color-gray2);
+        @include heading3;
+      }
+      ul {
+        margin-left: 1.2em;
+        list-style-type: disc;
+        li {
+          & + li {
+            margin-top: rem(8);
+          }
+        }
+      }
+      :where(img, figure) {
+        aspect-ratio: 600 / 400;
+        @include mq {
+          aspect-ratio: 380 / 253;
+        }
       }
       img {
         width: 100%;

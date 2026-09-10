@@ -62,6 +62,16 @@
 					}
 				}
 			}
+		},
+		{
+			"includes": ["src/app/news/\\[id\\]/page.tsx"],
+			"linter": {
+				"rules": {
+					"security": {
+						"noDangerouslySetInnerHtml": "off"
+					}
+				}
+			}
 		}
 	]
 }

@@ -3,6 +3,10 @@
   inset: 0 0 auto 0;
   z-index: var(--z-index-header);
   &.menuOpen {
+    :global(#backdrop) {
+      opacity: 1;
+      pointer-events: auto;
+    }
     .body {
       translate: 0;
       pointer-events: auto;
@@ -32,6 +36,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: var(--z-index-menu);
     translate: 120% 0;
     width: min(vwcalc(370), rem(370));
     height: 100dvh;
