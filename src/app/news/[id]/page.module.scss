@@ -42,6 +42,7 @@
         color: #fff;
         background-color: var(--color-primary);
         border-radius: var(--round-base) rem(2) var(--round-base) rem(2);
+        @include hover-fade;
       }
       .date {
         font-size: rem(14);
