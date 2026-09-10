@@ -70,8 +70,8 @@ export default async function News({ params }: NewsDetailProps) {
             </div>
           )}
           <div className={styles.meta}>
-            {post.category?.name && (
-              <p className={styles.category}>{post.category.name}</p>
+            {post.category.name && (
+              <p className={styles.tag}>{post.category.name}</p>
             )}
             <time
               className={styles.date}

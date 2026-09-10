@@ -5,6 +5,7 @@ import Heading from '@/components/heading/Heading';
 import Hero from '@/components/hero/Hero';
 import Content from '@/components/layout/Content';
 import Pager from '@/components/pager/Pager';
+import TermList from '@/components/term/TermList';
 import { getPostList } from '@/lib/microcms';
 import type { NewsItem } from '@/types/News';
 import { formatDate } from '@/utils/dateFormat';
@@ -67,6 +68,8 @@ export default async function NewsPage({ params }: NewsPageProps) {
       </Hero>
 
       <Content>
+        <TermList />
+
         <div className={styles.archive}>
           {newsList.map(news => (
             <NewsCard
@@ -75,7 +78,7 @@ export default async function NewsPage({ params }: NewsPageProps) {
               id={news.id}
               title={news.title}
               date={formatDate(news.publishedAt ?? news.createdAt)}
-              categoryName={news.category?.name}
+              category={news.category.name}
             />
           ))}
         </div>

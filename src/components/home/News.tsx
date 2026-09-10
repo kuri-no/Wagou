@@ -26,7 +26,7 @@ export default async function News() {
               id={news.id}
               title={news.title}
               date={formatDate(news.publishedAt ?? news.createdAt)}
-              categoryName={news.category?.name}
+              category={news.category.name}
             />
           ))}
         </div>

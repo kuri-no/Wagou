@@ -2,8 +2,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: min(vwcalc(31), rem(31)) min(vwcalc(25), rem(25));
+  margin-top: min(vwcalc(64), rem(64));
   @include mq {
     grid-template-columns: 1fr;
     gap: rem(36);
+    margin-top: rem(48);
   }
 }

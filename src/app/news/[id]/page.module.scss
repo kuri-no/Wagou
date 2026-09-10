@@ -29,7 +29,7 @@
       @include mq {
         margin-top: rem(26);
       }
-      .category {
+      .tag {
         display: grid;
         place-items: center;
         width: fit-content;
@@ -46,7 +46,6 @@
       .date {
         font-size: rem(14);
         line-height: 1.7;
-        font-weight: 700;
       }
     }
     .title {
