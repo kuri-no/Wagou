@@ -55,4 +55,13 @@ npm run build
 - `npm run icons` ... アイコン変換
 - `npm run typed-scss-modules` ... SCSS型生成
 
+## レンダリング戦略
+
+- `about`、`reservation`（フォーム）など更新頻度が低いページ ... SSG
+- TOP、`news` 配下（一覧・詳細・カテゴリ・ページネーション）
+  ... ISR + オンデマンドISR
+  - 時間経過型ISR（`revalidate`）を保険にしつつ、microCMSのWebhookを
+    トリガーにしたオンデマンドISR（`revalidatePath`/`revalidateTag`）で
+    記事の公開・更新・削除を即時反映します。
+
 ## 開発時の注意
