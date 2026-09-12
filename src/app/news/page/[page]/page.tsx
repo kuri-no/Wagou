@@ -1,17 +1,15 @@
 import { notFound, redirect } from 'next/navigation';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
-import NewsCard from '@/components/card/NewsCard';
 import Heading from '@/components/heading/Heading';
 import Hero from '@/components/hero/Hero';
 import Content from '@/components/layout/Content';
-import Pager from '@/components/pager/Pager';
-import TermList from '@/components/term/TermList';
+import Card from '@/components/news/Card';
+import Pager from '@/components/news/Pager';
+import TermList from '@/components/news/TermList';
 import { getPostList } from '@/lib/microcms';
 import type { NewsItem } from '@/types/News';
 import { formatDate } from '@/utils/dateFormat';
 import styles from '../../page.module.scss';
-
-const PER_PAGE = 9;
 
 const BreadcrumbItems = [
   {
@@ -29,8 +27,8 @@ type NewsPageProps = {
 };
 
 export async function generateStaticParams() {
-  const { totalCount } = await getPostList<NewsItem>('news', PER_PAGE, 1);
-  const totalPages = Math.ceil(totalCount / PER_PAGE);
+  const { totalCount } = await getPostList<NewsItem>('news', 9, 1);
+  const totalPages = Math.ceil(totalCount / 9);
 
   return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => ({
     page: String(i + 2),
@@ -50,7 +48,7 @@ export default async function NewsPage({ params }: NewsPageProps) {
 
   const { contents: newsList, totalCount } = await getPostList<NewsItem>(
     'news',
-    PER_PAGE,
+    9,
     currentPage,
     { orders: '-publishedAt' },
   );
@@ -59,12 +57,12 @@ export default async function NewsPage({ params }: NewsPageProps) {
     notFound();
   }
 
-  const totalPages = Math.ceil(totalCount / PER_PAGE);
+  const totalPages = Math.ceil(totalCount / 9);
 
   return (
     <>
       <Hero>
-        <Heading label="日々のこと" />
+        <Heading label="日々のこと" tagName="h1" />
       </Hero>
 
       <Content>
@@ -72,12 +70,16 @@ export default async function NewsPage({ params }: NewsPageProps) {
 
         <div className={styles.archive}>
           {newsList.map(news => (
-            <NewsCard
+            <Card
               key={news.id}
               src={news.thumbnail.url}
               id={news.id}
               title={news.title}
               date={formatDate(news.publishedAt ?? news.createdAt)}
+              dateTime={formatDate(
+                news.publishedAt ?? news.createdAt,
+                'YYYY-MM-DD',
+              )}
               category={news.category.name}
             />
           ))}

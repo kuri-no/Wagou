@@ -1,18 +1,16 @@
 import { notFound, redirect } from 'next/navigation';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
-import NewsCard from '@/components/card/NewsCard';
 import Heading from '@/components/heading/Heading';
 import Hero from '@/components/hero/Hero';
 import Content from '@/components/layout/Content';
-import Pager from '@/components/pager/Pager';
-import TermList from '@/components/term/TermList';
+import Card from '@/components/news/Card';
+import Pager from '@/components/news/Pager';
+import TermList from '@/components/news/TermList';
 import { getAllPost, getPostList } from '@/lib/microcms';
 import type { CategoryItem } from '@/types/Category';
 import type { NewsItem } from '@/types/News';
 import { formatDate } from '@/utils/dateFormat';
 import styles from '../../../../page.module.scss';
-
-const PER_PAGE = 9;
 
 type NewsCategoryPageProps = {
   params: Promise<{ slug: string; page: string }>;
@@ -26,10 +24,10 @@ export async function generateStaticParams() {
   const params: { slug: string; page: string }[] = [];
 
   for (const category of categories) {
-    const { totalCount } = await getPostList<NewsItem>('news', PER_PAGE, 1, {
+    const { totalCount } = await getPostList<NewsItem>('news', 9, 1, {
       filters: `category[equals]${category.id}`,
     });
-    const totalPages = Math.ceil(totalCount / PER_PAGE);
+    const totalPages = Math.ceil(totalCount / 9);
 
     for (let page = 2; page <= totalPages; page++) {
       params.push({ slug: category.slug, page: String(page) });
@@ -62,7 +60,7 @@ export default async function NewsCategoryPage({
 
   const { contents: newsList, totalCount } = await getPostList<NewsItem>(
     'news',
-    PER_PAGE,
+    9,
     currentPage,
     {
       orders: '-publishedAt',
@@ -74,7 +72,7 @@ export default async function NewsCategoryPage({
     notFound();
   }
 
-  const totalPages = Math.ceil(totalCount / PER_PAGE);
+  const totalPages = Math.ceil(totalCount / 9);
 
   const BreadcrumbItems = [
     {
@@ -94,7 +92,7 @@ export default async function NewsCategoryPage({
   return (
     <>
       <Hero>
-        <Heading label={category.name} />
+        <Heading label={category.name} tagName="h1" />
       </Hero>
 
       <Content>
@@ -102,12 +100,16 @@ export default async function NewsCategoryPage({
 
         <div className={styles.archive}>
           {newsList.map(news => (
-            <NewsCard
+            <Card
               key={news.id}
               src={news.thumbnail.url}
               id={news.id}
               title={news.title}
               date={formatDate(news.publishedAt ?? news.createdAt)}
+              dateTime={formatDate(
+                news.publishedAt ?? news.createdAt,
+                'YYYY-MM-DD',
+              )}
               category={news.category.name}
             />
           ))}
