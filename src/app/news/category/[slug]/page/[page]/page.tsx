@@ -12,6 +12,8 @@ import type { NewsItem } from '@/types/News';
 import { formatDate } from '@/utils/dateFormat';
 import styles from '../../../../page.module.scss';
 
+export const revalidate = 3600;
+
 type NewsCategoryPageProps = {
   params: Promise<{ slug: string; page: string }>;
 };
