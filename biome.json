@@ -64,7 +64,7 @@
 			}
 		},
 		{
-			"includes": ["src/app/news/\\[id\\]/page.tsx"],
+			"includes": ["src/components/news/Article.tsx"],
 			"linter": {
 				"rules": {
 					"security": {

@@ -1,12 +1,10 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import Content from '@/components/layout/Content';
+import Article from '@/components/news/Article';
 import SideBar from '@/components/news/SideBar';
 import { getAllPost, getPostDetail, getPostList } from '@/lib/microcms';
 import type { NewsItem } from '@/types/News';
-import { formatDate } from '@/utils/dateFormat';
 import styles from './page.module.scss';
 
 export const revalidate = 3600;
@@ -38,8 +36,6 @@ export default async function News({ params }: NewsDetailProps) {
     .filter(recent => recent.id !== post.id)
     .slice(0, 5);
 
-  const publishedDate = post.publishedAt ?? post.createdAt;
-
   const BreadcrumbItems = [
     {
       href: '/',
@@ -57,42 +53,9 @@ export default async function News({ params }: NewsDetailProps) {
 
   return (
     <Content variant="narrow">
-      <div className={styles.article}>
-        <article className={styles.body}>
-          {post.thumbnail && (
-            <div className={styles.thumbnail}>
-              <Image
-                src={post.thumbnail.url}
-                alt=""
-                width={post.thumbnail.width ?? 600}
-                height={post.thumbnail.height ?? 400}
-                loading="eager"
-                fetchPriority="high"
-              />
-            </div>
-          )}
-          <div className={styles.meta}>
-            {post.category.name && (
-              <Link
-                href={`/news/category/${post.category.slug}/`}
-                className={styles.tag}
-              >
-                {post.category.name}
-              </Link>
-            )}
-            <time
-              className={styles.date}
-              dateTime={formatDate(publishedDate, 'YYYY-MM-DD')}
-            >
-              {formatDate(publishedDate)}
-            </time>
-          </div>
-          <h1 className={styles.title}>{post.title}</h1>
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: post.body }}
-          />
-        </article>
+      <div className={styles.body}>
+        <Article post={post} />
+
         <SideBar recentPosts={recentPosts} />
       </div>
 
