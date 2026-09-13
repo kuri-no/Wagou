@@ -1,16 +1,26 @@
 import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
-import styles from './NewsCard.module.scss';
+import styles from './Card.module.scss';
 
 type CardProps = {
   src: string | StaticImageData;
   id: string;
   title: string;
   date: string;
+  dateTime: string;
   category: string;
+  tagName?: 'h2' | 'h3';
 };
 
-export default function Card({ src, id, title, date, category }: CardProps) {
+export default function Card({
+  src,
+  id,
+  title,
+  date,
+  dateTime,
+  category,
+  tagName: TagName = 'h2',
+}: CardProps) {
   return (
     <article className={styles.card}>
       <Link href={`/news/${id}/`} className={styles.inner}>
@@ -19,8 +29,10 @@ export default function Card({ src, id, title, date, category }: CardProps) {
         </div>
         <div className={styles.meta}>
           <p className={styles.tag}>{category}</p>
-          <time className={styles.date}>{date}</time>
-          <h3 className={styles.title}>{title}</h3>
+          <time className={styles.date} dateTime={dateTime}>
+            {date}
+          </time>
+          <TagName className={styles.title}>{title}</TagName>
         </div>
       </Link>
     </article>

@@ -22,7 +22,7 @@ export default function Reservation() {
   return (
     <>
       <Hero>
-        <Heading label="ご予約フォーム" />
+        <Heading label="ご予約フォーム" tagName="h1" />
       </Hero>
 
       <Content variant="tight">

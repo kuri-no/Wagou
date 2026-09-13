@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import logoBg from '@/assets/common/logo-bg.png';
 import Button from '@/components/button/Button';
-import NewsCard from '@/components/card/NewsCard';
 import Heading from '@/components/heading/Heading';
 import Content from '@/components/layout/Content';
+import Card from '@/components/news/Card';
 import { getPostList } from '@/lib/microcms';
 import type { NewsItem } from '@/types/News';
 import { formatDate } from '@/utils/dateFormat';
@@ -20,13 +20,18 @@ export default async function News() {
         <Heading label="日々のこと" />
         <div className={styles.body}>
           {newsList.map(news => (
-            <NewsCard
+            <Card
               key={news.id}
               src={news.thumbnail.url}
               id={news.id}
               title={news.title}
               date={formatDate(news.publishedAt ?? news.createdAt)}
+              dateTime={formatDate(
+                news.publishedAt ?? news.createdAt,
+                'YYYY-MM-DD',
+              )}
               category={news.category.name}
+              tagName="h3"
             />
           ))}
         </div>

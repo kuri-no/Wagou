@@ -5,6 +5,8 @@ import Menu from '@/components/home/Menu';
 import Mv from '@/components/home/Mv';
 import News from '@/components/home/News';
 
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <>

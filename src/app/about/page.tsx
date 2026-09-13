@@ -21,7 +21,7 @@ export default function About() {
   return (
     <>
       <Hero>
-        <Heading label="和合について" />
+        <Heading label="和合について" tagName="h1" />
       </Hero>
 
       <Content variant="tight">

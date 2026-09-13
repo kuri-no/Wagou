@@ -4,10 +4,12 @@ import iconHeading from '@/assets/common/icon-heading.png';
 
 export type HeadingProps = {
   label: string;
+  tagName?: 'h1' | 'h2';
 };
 
 export default function Heading({
   label,
+  tagName: TagName = 'h2',
 }: HeadingProps) {
   return (
     <div className={styles.heading}>
@@ -19,7 +21,7 @@ export default function Heading({
           height={38}
         />
       </div>
-      <h2 className={styles.label}>{label}</h2>
+      <TagName className={styles.label}>{label}</TagName>
     </div>
   );
 }

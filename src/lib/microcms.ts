@@ -34,7 +34,7 @@ export const getAllPost = async <T>(
   });
 };
 
-const defaultPerPage = 10;
+const defaultPerPage = 9;
 
 export const getPostList = async <T>(
   endpoint: string,

@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <>
       <Hero>
-        <Heading label="404" />
+        <Heading label="404" tagName="h1" />
       </Hero>
 
       <Content variant="tight">
