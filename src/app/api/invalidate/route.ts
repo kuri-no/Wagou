@@ -6,14 +6,14 @@ export async function POST(request: NextRequest) {
     request.headers.get('x-wagou-bypass-token') !==
     process.env.MICROCMS_BYPASS_TOKEN
   ) {
-    return NextResponse.json({ message: 'Invalid bypass token' }, {
-      status: 401,
-    });
+    return NextResponse.json(
+      { message: 'Invalid bypass token' },
+      { status: 401 },
+    );
   }
 
   revalidatePath('/');
-  revalidatePath('/news');
-  revalidatePath('/news/[id]', 'page');
+  revalidatePath('/news', 'layout');
 
   return NextResponse.json({ revalidated: true });
 }
