@@ -12,6 +12,7 @@ export async function POST(request: NextRequest) {
   }
 
   revalidatePath('/');
+  revalidatePath('/news');
   revalidatePath('/news/');
   revalidatePath('/news/[id]', 'page');
 
