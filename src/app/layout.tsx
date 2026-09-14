@@ -10,11 +10,16 @@ const SITE_TITLE = process.env.NEXT_PUBLIC_SITE_TITLE;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: SITE_TITLE,
-  description: "茶舗 和合は、真菰・米・お茶の栽培から手がける日本茶専門店です。旨みたっぷりの煎茶や玉露、まこも茶、和菓子など、心とからだを調えるひとときをお届けします。",
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_TITLE}`,
+  },
+  description:
+    '茶舗 和合は、真菰・米・お茶の栽培から手がける日本茶専門店です。旨みたっぷりの煎茶や玉露、まこも茶、和菓子など、心とからだを調えるひとときをお届けします。',
   openGraph: {
     title: SITE_TITLE,
-    description: "茶舗 和合は、真菰・米・お茶の栽培から手がける日本茶専門店です。旨みたっぷりの煎茶や玉露、まこも茶、和菓子など、心とからだを調えるひとときをお届けします。",
+    description:
+      '茶舗 和合は、真菰・米・お茶の栽培から手がける日本茶専門店です。旨みたっぷりの煎茶や玉露、まこも茶、和菓子など、心とからだを調えるひとときをお届けします。',
     url: '/',
     siteName: SITE_TITLE,
     images: [{ url: '/ogp.png', width: 1200, height: 630 }],

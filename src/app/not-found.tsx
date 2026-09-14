@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import icon1 from '@/assets/common/icon_1.png';
 import Button from '@/components/button/Button';
@@ -5,6 +6,12 @@ import Heading from '@/components/heading/Heading';
 import Hero from '@/components/hero/Hero';
 import Content from '@/components/layout/Content';
 import styles from './NotFound.module.scss';
+
+export const metadata: Metadata = {
+  title: '404',
+  description:
+    'あなたがアクセスしようとしたページは削除されたかURLが変更されているため、ページが見つかりませんでした。',
+};
 
 export default function NotFound() {
   return (

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import img1 from '@/assets/common/img_1.jpg';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
@@ -5,6 +6,11 @@ import Heading from '@/components/heading/Heading';
 import Hero from '@/components/hero/Hero';
 import Content from '@/components/layout/Content';
 import styles from './page.module.scss';
+
+export const metadata: Metadata = {
+  title: '和合について',
+  description: '茶舗 和合の理念や真菰・米・お茶の栽培について紹介します。',
+};
 
 const BreadcrumbItems = [
   {

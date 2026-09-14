@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import Heading from '@/components/heading/Heading';
@@ -24,6 +25,25 @@ export async function generateStaticParams() {
   });
 
   return categories.map(category => ({ slug: category.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: NewsCategoryProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const [category] = await getAllPost<CategoryItem>('category', {
+    filters: `slug[equals]${slug}`,
+  });
+
+  if (!category) {
+    return {};
+  }
+
+  return {
+    title: `${category.name}の記事一覧`,
+    description: `${category.name}の記事一覧ページです。`,
+  };
 }
 
 export default async function NewsCategory({ params }: NewsCategoryProps) {

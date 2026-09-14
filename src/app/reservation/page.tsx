@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import logoBg from '@/assets/common/logo-bg.png';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
@@ -6,6 +7,11 @@ import Heading from '@/components/heading/Heading';
 import Hero from '@/components/hero/Hero';
 import Content from '@/components/layout/Content';
 import styles from './page.module.scss';
+
+export const metadata: Metadata = {
+  title: 'ご予約フォーム',
+  description: 'ご予約フォームページです。',
+};
 
 const BreadcrumbItems = [
   {
