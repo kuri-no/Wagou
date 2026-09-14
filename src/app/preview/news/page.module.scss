@@ -1,0 +1,11 @@
+.body {
+  display: grid;
+  grid-template-columns: minmax(auto, rem(600)) minmax(auto, rem(300));
+  column-gap: min(vwcalc(60), rem(60));
+  margin-top: min(vwcalc(90), rem(90));
+  @include mq {
+    grid-template-columns: 1fr;
+    row-gap: rem(52);
+    margin-top: rem(36);
+  }
+}
