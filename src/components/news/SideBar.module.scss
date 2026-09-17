@@ -47,7 +47,13 @@
       row-gap: rem(6);
       padding-bottom: rem(8);
       border-bottom: rem(1) solid var(--color-gray3);
-      @include hover-fade;
+      @media (any-hover: hover) {
+        &:hover {
+          .title {
+            color: var(--color-accent);
+          }
+        }
+      }
       .date {
         font-size: rem(13);
         line-height: 1.2;
@@ -58,6 +64,7 @@
         line-height: 1.7;
         letter-spacing: 0.12em;
         font-weight: 700;
+        transition: color var(--hover-base-duration) var(--hover-base-easing);
       }
     }
   }

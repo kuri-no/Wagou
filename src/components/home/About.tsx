@@ -1,12 +1,19 @@
+'use client';
+
 import Image from 'next/image';
+import { useEffect } from 'react';
 import icon2 from '@/assets/common/icon_2.png';
 import img1 from '@/assets/top/img_1.png';
 import img2 from '@/assets/top/img_2.png';
 import img3 from '@/assets/top/img_3.png';
 import img4 from '@/assets/top/img_4.png';
+import { ScaleIn } from '@/hooks/animation';
 import styles from './About.module.scss';
 
 export default function About() {
+  useEffect(() => {
+    ScaleIn();
+  }, []);
   return (
     <div className={styles.about}>
       <div className={styles.body}>
@@ -58,16 +65,34 @@ export default function About() {
           <Image src={icon2} alt="" width={190} height={142} loading="lazy" />
         </div>
       </div>
-      <div className={`${styles.deco} ${styles.deco_1}`}>
+      <div
+        className={`${styles.deco} ${styles.deco_1}`}
+        data-scale-in
+        data-start="top 60%"
+      >
         <Image src={img1} alt="" width={556} height={610} loading="lazy" />
       </div>
-      <div className={`${styles.deco} ${styles.deco_2}`}>
+      <div
+        className={`${styles.deco} ${styles.deco_2}`}
+        data-scale-in
+        data-start="top 60%"
+        data-delay="0.2"
+      >
         <Image src={img2} alt="" width={639} height={645} loading="lazy" />
       </div>
-      <div className={`${styles.deco} ${styles.deco_3}`}>
+      <div
+        className={`${styles.deco} ${styles.deco_3}`}
+        data-scale-in
+        data-start="top 90%"
+      >
         <Image src={img3} alt="" width={516} height={653} loading="lazy" />
       </div>
-      <div className={`${styles.deco} ${styles.deco_4}`}>
+      <div
+        className={`${styles.deco} ${styles.deco_4}`}
+        data-scale-in
+        data-start="top 90%"
+        data-delay="0.2"
+      >
         <Image src={img4} alt="" width={597} height={652} loading="lazy" />
       </div>
     </div>
