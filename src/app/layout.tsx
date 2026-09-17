@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import '@/scss/reset.scss';
 import '@/scss/global.scss';
 import Footer from '@/components/footer/Footer';
@@ -7,6 +8,18 @@ import Main from '@/components/layout/Main';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 const SITE_TITLE = process.env.NEXT_PUBLIC_SITE_TITLE;
+
+const notoSerifJP = Noto_Serif_JP({
+  weight: ['400', '700'],
+  variable: '--font-base',
+  subsets: ['latin'],
+});
+
+const notoSansJP = Noto_Sans_JP({
+  weight: ['700'],
+  variable: '--font-notosan',
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -35,7 +48,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <body>
+      <body className={`${notoSerifJP.variable} ${notoSansJP.variable}`}>
         <Header />
         <Main>{children}</Main>
         <Footer />
