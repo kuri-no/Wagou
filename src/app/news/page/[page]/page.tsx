@@ -16,7 +16,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: '日々のこと',
-  description: '日々のこと一覧ページです。',
+  description: '茶舗 和合の日々の出来事をお届けする、お知らせ一覧ページです。',
 };
 
 const BreadcrumbItems = [

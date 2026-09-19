@@ -55,7 +55,7 @@ export async function generateMetadata({
 
   return {
     title: `${category.name}の記事一覧`,
-    description: `${category.name}の記事一覧ページです。`,
+    description: `茶舗 和合の日々の出来事から「${category.name}」に関する記事をまとめた一覧ページです。`,
   };
 }
 

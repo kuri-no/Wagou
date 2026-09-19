@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: '日々のこと投稿ページです。',
+    description: '茶舗 和合の日々の出来事をお届けする、お知らせの詳細ページです。',
   };
 }
 
