@@ -61,6 +61,10 @@ body {
   scroll-margin-top: var(--header-height);
 }
 
+[data-scale-in] {
+  opacity: 0;
+}
+
 :where(:focus) {
   outline: none;
 }
