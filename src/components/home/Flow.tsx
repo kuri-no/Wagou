@@ -11,6 +11,7 @@ import slide3 from '@/assets/top/slide_3.jpg';
 import slide4 from '@/assets/top/slide_4.jpg';
 import Heading from '@/components/heading/Heading';
 import Content from '@/components/layout/Content';
+import { ScaleIn } from '@/hooks/animation';
 import styles from './Flow.module.scss';
 
 const flowItems = [
@@ -80,6 +81,10 @@ export default function Flow() {
     };
   }, []);
 
+  useEffect(() => {
+    ScaleIn();
+  }, []);
+
   return (
     <div className={styles.flow}>
       <Content>
@@ -94,7 +99,7 @@ export default function Flow() {
           繋がると考えています。
         </p>
       </Content>
-      <div className={styles.icon}>
+      <div className={styles.icon} data-scale-in>
         <Image src={icon4} alt="" width={229} height={172} loading="lazy" />
       </div>
       <div ref={sliderRef} className="splide">

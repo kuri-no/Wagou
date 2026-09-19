@@ -61,38 +61,20 @@ export default function About() {
             なりますように。
           </p>
         </div>
-        <div className={styles.icon}>
+        <div className={styles.icon} data-scale-in>
           <Image src={icon2} alt="" width={190} height={142} loading="lazy" />
         </div>
       </div>
-      <div
-        className={`${styles.deco} ${styles.deco_1}`}
-        data-scale-in
-        data-start="top 70%"
-      >
+      <div className={`${styles.deco} ${styles.deco_1}`}>
         <Image src={img1} alt="" width={556} height={610} loading="lazy" />
       </div>
-      <div
-        className={`${styles.deco} ${styles.deco_2}`}
-        data-scale-in
-        data-start="top 70%"
-        data-delay="0.2"
-      >
+      <div className={`${styles.deco} ${styles.deco_2}`}>
         <Image src={img2} alt="" width={639} height={645} loading="lazy" />
       </div>
-      <div
-        className={`${styles.deco} ${styles.deco_3}`}
-        data-scale-in
-        data-start="top 90%"
-      >
+      <div className={`${styles.deco} ${styles.deco_3}`}>
         <Image src={img3} alt="" width={516} height={653} loading="lazy" />
       </div>
-      <div
-        className={`${styles.deco} ${styles.deco_4}`}
-        data-scale-in
-        data-start="top 90%"
-        data-delay="0.2"
-      >
+      <div className={`${styles.deco} ${styles.deco_4}`}>
         <Image src={img4} alt="" width={597} height={652} loading="lazy" />
       </div>
     </div>
