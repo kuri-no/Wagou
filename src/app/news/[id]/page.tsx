@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import Content from '@/components/layout/Content';
@@ -17,6 +18,22 @@ export async function generateStaticParams() {
   const posts = await getAllPost<NewsItem>('news', { fields: 'id' });
 
   return posts.map(post => ({ id: post.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: NewsDetailProps): Promise<Metadata> {
+  const { id } = await params;
+  const post = await getPostDetail<NewsItem>('news', id);
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: post.title,
+    description: '茶舗 和合の日々の出来事をお届けする、お知らせの詳細ページです。',
+  };
 }
 
 export default async function News({ params }: NewsDetailProps) {

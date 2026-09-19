@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import Heading from '@/components/heading/Heading';
@@ -12,6 +13,11 @@ import { formatDate } from '@/utils/dateFormat';
 import styles from '../../page.module.scss';
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  title: '日々のこと',
+  description: '茶舗 和合の日々の出来事をお届けする、お知らせ一覧ページです。',
+};
 
 const BreadcrumbItems = [
   {
