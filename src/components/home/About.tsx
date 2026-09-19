@@ -68,14 +68,14 @@ export default function About() {
       <div
         className={`${styles.deco} ${styles.deco_1}`}
         data-scale-in
-        data-start="top 60%"
+        data-start="top 70%"
       >
         <Image src={img1} alt="" width={556} height={610} loading="lazy" />
       </div>
       <div
         className={`${styles.deco} ${styles.deco_2}`}
         data-scale-in
-        data-start="top 60%"
+        data-start="top 70%"
         data-delay="0.2"
       >
         <Image src={img2} alt="" width={639} height={645} loading="lazy" />

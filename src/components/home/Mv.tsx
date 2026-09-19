@@ -35,9 +35,10 @@ export default function Mv() {
       arrows: false,
       pagination: true,
       autoplay: true,
-      interval: 4000,
-      speed: 1500,
+      interval: 5000,
+      speed: 2000,
       pauseOnHover: false,
+      pauseOnFocus: false,
       intersection: {
         inView: {
           autoplay: true,
