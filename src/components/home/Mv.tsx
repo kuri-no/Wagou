@@ -16,6 +16,7 @@ import slide2 from '@/assets/top/mv_2.png';
 import slide3 from '@/assets/top/mv_3.png';
 import slide4 from '@/assets/top/mv_4.png';
 import slide5 from '@/assets/top/mv_5.png';
+import { ScaleIn } from '@/hooks/animation';
 import useScroll from '@/hooks/useScroll';
 import styles from './Mv.module.scss';
 
@@ -35,9 +36,10 @@ export default function Mv() {
       arrows: false,
       pagination: true,
       autoplay: true,
-      interval: 4000,
-      speed: 1500,
+      interval: 5000,
+      speed: 2000,
       pauseOnHover: false,
+      pauseOnFocus: false,
       intersection: {
         inView: {
           autoplay: true,
@@ -51,6 +53,10 @@ export default function Mv() {
     return () => {
       mvSlider.destroy();
     };
+  }, []);
+
+  useEffect(() => {
+    ScaleIn();
   }, []);
 
   return (
@@ -159,7 +165,7 @@ export default function Mv() {
             <span>和み合う</span>
             <span>茶舗和合</span>
           </p>
-          <div className={styles.icon}>
+          <div className={styles.icon} data-scale-in>
             <Image src={icon1} alt="" width={200} height={131} loading="lazy" />
           </div>
         </div>
