@@ -39,7 +39,10 @@ export default function Header() {
     if (prevPathnameRef.current === pathname) return;
     prevPathnameRef.current = pathname;
 
-    if (menuOpen) closeMenu();
+    if (!menuOpen) return;
+
+    closeMenu();
+    window.scrollTo(0, 0);
   }, [pathname, menuOpen, closeMenu]);
 
   useLayoutEffect(() => {
