@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import icon1 from '@/assets/common/icon_1.png';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
+import Button from '@/components/button/Button';
 import Heading from '@/components/heading/Heading';
 import Hero from '@/components/hero/Hero';
 import Content from '@/components/layout/Content';
@@ -49,6 +50,7 @@ export default function Thanks() {
               今しばらくお待ちくださいませ。
             </p>
           </div>
+          <Button href="/" text="トップページへ" />
           <div className={styles.icon}>
             <Image src={icon1} alt="" width={200} height={131} loading="lazy" />
           </div>
