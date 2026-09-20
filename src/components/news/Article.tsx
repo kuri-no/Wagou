@@ -13,27 +13,23 @@ export default function Article({ post }: ArticleProps) {
 
   return (
     <article className={styles.article}>
-      {post.thumbnail && (
-        <div className={styles.thumbnail}>
-          <Image
-            src={post.thumbnail.url}
-            alt=""
-            width={post.thumbnail.width ?? 600}
-            height={post.thumbnail.height ?? 400}
-            loading="eager"
-            fetchPriority="high"
-          />
-        </div>
-      )}
+      <div className={styles.thumbnail}>
+        <Image
+          src={post.thumbnail.url}
+          alt=""
+          width={post.thumbnail.width ?? 600}
+          height={post.thumbnail.height ?? 400}
+          loading="eager"
+          fetchPriority="high"
+        />
+      </div>
       <div className={styles.meta}>
-        {post.category.name && (
-          <Link
-            href={`/news/category/${post.category.slug}/`}
-            className={styles.tag}
-          >
-            {post.category.name}
-          </Link>
-        )}
+        <Link
+          href={`/news/category/${post.category.slug}/`}
+          className={styles.tag}
+        >
+          {post.category.name}
+        </Link>
         <time
           className={styles.date}
           dateTime={formatDate(publishedDate, 'YYYY-MM-DD')}
