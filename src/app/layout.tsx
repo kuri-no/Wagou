@@ -45,7 +45,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja">
       <body className={`${notoSerifJP.variable} ${notoSansJP.variable}`}>
