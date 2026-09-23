@@ -17,8 +17,8 @@ export default function Article({ post }: ArticleProps) {
         <Image
           src={post.thumbnail.url}
           alt=""
-          width={post.thumbnail.width ?? 600}
-          height={post.thumbnail.height ?? 400}
+          width={600}
+          height={400}
           loading="eager"
           fetchPriority="high"
         />
