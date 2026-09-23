@@ -32,7 +32,7 @@ export default function NotFound() {
             <p>トップページから再度お探しください。</p>
           </div>
           <Button href="/" text="トップページへ" />
-          <div className={styles.icon}>
+          <div className={styles.icon} data-scale-in>
             <Image src={icon1} alt="" width={200} height={131} loading="lazy" />
           </div>
         </div>
