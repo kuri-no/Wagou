@@ -5,6 +5,7 @@ import Link from 'next/link';
 import bg from '@/assets/common/bg.png';
 import logo from '@/assets/common/logo.png';
 import Content from '@/components/layout/Content';
+import { navList } from '@/constants/navigation';
 import useScroll from '@/hooks/useScroll';
 import styles from './footer.module.scss';
 
@@ -33,44 +34,18 @@ export default function Footer() {
           </div>
           <nav className={styles.nav}>
             <ul className={styles.list}>
-              <li className={styles.item}>
-                <Link
-                  href="/about/"
-                  className={styles.link}
-                  onClick={e => handleAnchorClick(e, '/about/')}
-                >
-                  和合について
-                </Link>
-              </li>
-              <li className={styles.item}>
-                <Link
-                  href="/#anc_1"
-                  scroll={false}
-                  className={styles.link}
-                  onClick={e => handleAnchorClick(e, '/#anc_1')}
-                >
-                  おしながき
-                </Link>
-              </li>
-              <li className={styles.item}>
-                <Link
-                  href="/news/"
-                  className={styles.link}
-                  onClick={e => handleAnchorClick(e, '/news/')}
-                >
-                  日々のこと
-                </Link>
-              </li>
-              <li className={styles.item}>
-                <Link
-                  href="/#anc_2"
-                  scroll={false}
-                  className={styles.link}
-                  onClick={e => handleAnchorClick(e, '/#anc_2')}
-                >
-                  アクセス
-                </Link>
-              </li>
+              {navList.map(({ title, path }) => (
+                <li key={path} className={styles.item}>
+                  <Link
+                    href={path}
+                    scroll={path.includes('#') ? false : undefined}
+                    className={styles.link}
+                    onClick={e => handleAnchorClick(e, path)}
+                  >
+                    {title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
           <p className={styles.copyright}>© 2026 Wagou</p>
