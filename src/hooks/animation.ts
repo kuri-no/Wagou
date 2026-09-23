@@ -3,28 +3,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const scaleInTweens = new Set<gsap.core.Tween>();
-let scaleInRemovalObserver: MutationObserver | null = null;
-
-function watchScaleInRemoval() {
-  if (scaleInRemovalObserver) return;
-
-  scaleInRemovalObserver = new MutationObserver(() => {
-    for (const tween of scaleInTweens) {
-      const [target] = tween.targets<HTMLElement>();
-      if (!target?.isConnected) {
-        tween.scrollTrigger?.kill();
-        tween.kill();
-        scaleInTweens.delete(tween);
-      }
-    }
-  });
-  scaleInRemovalObserver.observe(document.body, {
-    childList: true,
-    subtree: true,
-  });
-}
-
 export function ScaleIn() {
   const items = gsap.utils.toArray<HTMLElement>('[data-scale-in]');
 
@@ -36,7 +14,7 @@ export function ScaleIn() {
     const delay = parseFloat(item.dataset.delay ?? '0');
     const start = item.dataset.start ?? 'top 90%';
 
-    const tween = gsap.fromTo(
+    gsap.fromTo(
       item,
       { autoAlpha: 0, y: 40, scale: 0.6 },
       {
@@ -50,13 +28,9 @@ export function ScaleIn() {
           trigger: item,
           start,
           // markers: true,
-          toggleActions: 'play none none none',
+          once: true,
         },
       },
     );
-
-    scaleInTweens.add(tween);
   }
-
-  watchScaleInRemoval();
 }

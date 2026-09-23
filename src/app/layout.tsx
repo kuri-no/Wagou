@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import '@/scss/reset.scss';
 import '@/scss/global.scss';
+import ScaleInTrigger from '@/components/Animation';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Main from '@/components/layout/Main';
@@ -45,13 +46,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja">
       <body className={`${notoSerifJP.variable} ${notoSansJP.variable}`}>
         <Header />
         <Main>{children}</Main>
         <Footer />
+        <ScaleInTrigger />
       </body>
     </html>
   );

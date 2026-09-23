@@ -1,9 +1,5 @@
-'use client';
-
 import Image from 'next/image';
-import { useEffect } from 'react';
 import iconHeading from '@/assets/common/icon-heading.png';
-import { ScaleIn } from '@/hooks/animation';
 import styles from './Heading.module.scss';
 
 export type HeadingProps = {
@@ -15,10 +11,6 @@ export default function Heading({
   label,
   tagName: TagName = 'h2',
 }: HeadingProps) {
-  useEffect(() => {
-    ScaleIn();
-  }, []);
-
   return (
     <div className={styles.heading}>
       <div className={styles.icon} data-scale-in>

@@ -17,7 +17,6 @@ export default function HamburgerIcon({
       className={`${styles.trigger} ${menuOpen ? styles.menuOpen : ''}`}
       aria-expanded={menuOpen}
       aria-label={menuOpen ? 'メニューを閉じる' : 'メニューを開く'}
-      aria-controls="menu"
       onClick={onClick}
     >
       <div className={styles.bars}>
