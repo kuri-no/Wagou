@@ -75,6 +75,16 @@
           }
         }
       }
+    },
+    {
+      "includes": ["src/components/Animation.tsx"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useExhaustiveDependencies": "off"
+          }
+        }
+      }
     }
   ]
 }

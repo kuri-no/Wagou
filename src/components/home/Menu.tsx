@@ -1,7 +1,4 @@
-'use client';
-
 import Image from 'next/image';
-import { useEffect } from 'react';
 import icon3 from '@/assets/common/icon_3.png';
 import modal1 from '@/assets/top/modal_1.jpg';
 import modal2 from '@/assets/top/modal_2.jpg';
@@ -15,7 +12,6 @@ import modal9 from '@/assets/top/modal_9.jpg';
 import Heading from '@/components/heading/Heading';
 import Content from '@/components/layout/Content';
 import Modal from '@/components/modal/Modal';
-import { ScaleIn } from '@/hooks/animation';
 import styles from './Menu.module.scss';
 
 const modalItems = [
@@ -67,9 +63,6 @@ const modalItems = [
 ];
 
 export default function Menu() {
-  useEffect(() => {
-    ScaleIn();
-  }, []);
   return (
     <div id="anc_1" className={styles.menu}>
       <Content className={styles.menuContent}>

@@ -17,7 +17,6 @@ import slide3 from '@/assets/top/mv_3.png';
 import slide4 from '@/assets/top/mv_4.png';
 import slide5 from '@/assets/top/mv_5.png';
 import { navList } from '@/constants/navigation';
-import { ScaleIn } from '@/hooks/animation';
 import useScroll from '@/hooks/useScroll';
 import styles from './Mv.module.scss';
 
@@ -54,10 +53,6 @@ export default function Mv() {
     return () => {
       mvSlider.destroy();
     };
-  }, []);
-
-  useEffect(() => {
-    ScaleIn();
   }, []);
 
   return (

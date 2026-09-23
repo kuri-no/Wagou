@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import '@/scss/reset.scss';
 import '@/scss/global.scss';
+import ScaleInTrigger from '@/components/Animation';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Main from '@/components/layout/Main';
@@ -54,6 +55,7 @@ export default function RootLayout({
         <Header />
         <Main>{children}</Main>
         <Footer />
+        <ScaleInTrigger />
       </body>
     </html>
   );

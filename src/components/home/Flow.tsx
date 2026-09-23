@@ -11,7 +11,6 @@ import slide3 from '@/assets/top/slide_3.jpg';
 import slide4 from '@/assets/top/slide_4.jpg';
 import Heading from '@/components/heading/Heading';
 import Content from '@/components/layout/Content';
-import { ScaleIn } from '@/hooks/animation';
 import styles from './Flow.module.scss';
 
 const flowItems = [
@@ -79,10 +78,6 @@ export default function Flow() {
     return () => {
       flowSlider.destroy();
     };
-  }, []);
-
-  useEffect(() => {
-    ScaleIn();
   }, []);
 
   return (

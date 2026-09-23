@@ -1,19 +1,12 @@
-'use client';
-
 import Image from 'next/image';
-import { useEffect } from 'react';
 import icon2 from '@/assets/common/icon_2.png';
 import img1 from '@/assets/top/img_1.png';
 import img2 from '@/assets/top/img_2.png';
 import img3 from '@/assets/top/img_3.png';
 import img4 from '@/assets/top/img_4.png';
-import { ScaleIn } from '@/hooks/animation';
 import styles from './About.module.scss';
 
 export default function About() {
-  useEffect(() => {
-    ScaleIn();
-  }, []);
   return (
     <div className={styles.about}>
       <div className={styles.body}>
