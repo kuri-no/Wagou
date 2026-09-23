@@ -29,7 +29,7 @@ export default function Button({
       <Link
         href={href}
         className={buttonClassName}
-        {...(blank ? { target: '_blank' } : {})}
+        {...(blank ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
         {text}
       </Link>
