@@ -1,35 +1,26 @@
 # WAGOU
 
+https://wagou.vercel.app/
+
+Basic認証  
+ユーザー名 ：wagou
+パスワード ：nextsample
+ページ数　 ：7P
+
 Next.jsで制作されているコーポーレートサイトです。
 フロントはNext.js、CMSはmicroCMSを連携しています。
+お問い合わせはSSGForm、ホスティングはVercelでデプロイしています。
 
 ## 主な技術スタック
 
-- Next.js
+- Next.js 16（App Router）
+- React 19
 - TypeScript
 - CSS Modules(SCSS)
 - GSAP
-- SSGForm
 - microCMS
+- SSGForm
 - Vercel
-
-## セットアップ
-
-```bash
-npm install
-```
-
-## 開発サーバー起動
-
-```bash
-npm run dev
-```
-
-## ビルド
-
-```bash
-npm run build
-```
 
 ## ディレクトリ構成
 
@@ -38,14 +29,16 @@ npm run build
 ├── public/             ... 静的ファイル
 ├── src/
 │   ├── app/            ... App Router（ページ・レイアウト・ルーティング）
-│   ├── assets/         ... 画像やフォント等のアセット
+│   ├── assets/         ... 画像アセット
 │   ├── components/     ... UIコンポーネント群
-│   ├── hooks/          ... カスタムフック（React再利用ロジック）
+│   ├── constants/      ... 定数（ナビゲーション項目など）
+│   ├── hooks/          ... カスタムフック（アニメーション等）
 │   ├── icons/          ... SVGアイコン
 │   ├── lib/            ... ライブラリ・API連携
 │   ├── scss/           ... SCSSグローバル・共通スタイル
 │   ├── types/          ... 型定義
 │   ├── utils/          ... ユーティリティ関数
+│   └── middleware.ts   ... Basic認証
 ```
 
 ## スクリプト
@@ -55,46 +48,47 @@ npm run build
 - `npm run icons` ... アイコン変換
 - `npm run typed-scss-modules` ... SCSS型生成
 
-## レンダリング戦略
+## レンダリング設計
 
-- `about`、`reservation`（フォーム）など更新頻度が低いページ ... SSG
-- TOP、`news` 配下（一覧・詳細・カテゴリ・ページネーション）
-  ... ISR + オンデマンドISR
-  - 時間経過型ISR（`revalidate`）を保険にしつつ、microCMSのWebhookを
-    トリガーにしたオンデマンドISR（`revalidatePath`/`revalidateTag`）で
-    記事の公開・更新・削除を即時反映します。
-  - 下書きプレビューは `/preview/news?contentId=...&draftKey=...`
-    （microCMS管理画面の「プレビュー」ボタンから直接アクセス）で行います。
+ページの更新頻度と運用方法に合わせて、ISR・SSG・動的レンダリングを使い分けました。
 
-## 環境変数
+### TOP・ニュース関連ページ：ISR + オンデマンドISR
 
-- `NEXT_PUBLIC_SITE_URL`
-- `NEXT_PUBLIC_SITE_TITLE`
-- `MICROCMS_API_KEY`
-- `MICROCMS_SERVICE_DOMAIN`
-- `NEXT_PUBLIC_SSG_FORM`
-- `MICROCMS_BYPASS_TOKEN`
-- `BASIC_AUTH_USER` / `BASIC_AUTH_PASSWORD`（任意。両方設定するとサイト
-  全体にBasic認証がかかります）
+記事の更新を速やかに反映しながら、microCMSへの不要なAPIリクエストを抑えることを目指しました。
 
-`NEXT_PUBLIC_` が付く値はブラウザに公開されるため、秘密情報は含めないでください。
+- microCMSのWebhookを受けて、TOPとニュース配下のキャッシュを無効化し、次回アクセス時に再生成する構成にしました。
+  記事詳細だけでなく、一覧・カテゴリ・ページネーションも再検証の対象にしています。
+- Webhookによる再検証が行われなかった場合の保険として、`revalidate = 3600`を設定しました。
+  1時間経過後のアクセスをトリガーに、バックグラウンドで再生成します。
+- 通常の更新反映はWebhookを起点にすることで、時間経過型ISRの間隔を短くすることに頼らない設計にしました。
+- Webhookの受信時には秘密トークンを検証し、不正な再検証リクエストを拒否しています。
 
-## Basic認証
+### 会社紹介・フォームページ：SSG
 
-`BASIC_AUTH_USER`・`BASIC_AUTH_PASSWORD` を両方設定すると、サイト全体に
-Basic認証がかかります（公開前の作業中アクセス制限用）。ただし以下は
-認証対象から除外されます。
+更新頻度が低いページはビルド時に静的生成し、アクセスごとのページ生成を不要にしました。
 
-- `/api` ... microCMSのWebhook（オンデマンドISR）を通すため
-- `/preview` ... microCMSのプレビュー機能を通すため
-- `_next/static`・`_next/image`・`favicon.ico` ... 静的アセット
+### 下書きプレビュー：動的レンダリング
 
-## 開発時の注意
+編集者が公開前に記事の表示を確認できるよう、microCMSの下書きプレビューに対応しました。
+`contentId`と`draftKey`を使って下書きを取得し、公開ページと共通の記事コンポーネントで表示しています。
 
-- TypeScript/TSX を優先し、React は関数コンポーネントで実装します。
-- クライアント機能が必要なコンポーネントだけに `'use client'` を付けます。
-- import は可能な範囲で `@/` エイリアスを使い、Biome の import 整理に従います。
-- 既存 API を不用意に変更せず、props には明示的な型を付けます。
-- 内部リンクは `next/link`、最適化対象の画像は原則 `next/image` を使います。
-- Biome の設定（スペース 2 個、セミコロンあり、JavaScript/TypeScript は
-  シングルクォート、1 行 80 文字）を優先します。
+## API連携
+
+microCMSへのアクセスを`src/lib/microcms.ts`に集約し、ページコンポーネントからデータ取得の実装を切り離しました。
+複数のページで取得処理を共通化し、変更時の修正箇所をまとめています。
+
+- **用途に応じた取得処理の共通化**
+  記事詳細・静的パス生成・一覧表示に対応する`getPostDetail`・`getAllPost`・`getPostList`を用意しました。
+  一覧取得ではページ番号から`offset`を算出する処理を共通化し、カテゴリの絞り込みや並び順は呼び出し側で指定できるようにしています。
+
+- **記事が存在しない場合の処理**
+  詳細取得で404が返った場合は`null`を返し、ページ側で記事が存在しない場合の表示を判断できるようにしました。
+  それ以外のエラーは再スローし、404と区別しています。
+
+- **取得条件とレスポンスの型定義**
+  microCMSの取得条件と、取得する記事・カテゴリのデータ構造に型を付けました。指定する値や項目名の間違いに開発中に気づけるようにしました。
+
+## フォーム連携
+
+SSGFormを採用しました。
+静的生成したフォームページから外部サービスへ送信できるため、フォーム専用のバックエンドやメール送信基盤を自前で構築・運用する負担を抑えられると考えました。
