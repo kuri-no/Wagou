@@ -69,10 +69,27 @@ microCMSへのアクセスを`src/lib/microcms.ts`に集約し、ページコン
 お問い合わせの受付・通知メール送信にSSGFormを採用しました。  
 静的生成したフォームページから外部サービスへ送信できるため、フォーム専用のバックエンドやメール送信基盤を自前で構築・運用する負担を抑えられると考えました。
 
+## CI/CD（デプロイ）
+
+GitHub ActionsからVercelへ本番デプロイする構成にしました。  
+ブランチは`main`と`feature`の2種類で運用し、`feature`で作業・ローカル確認を行ったうえで`main`へマージします。
+
+### mainへのpushで本番デプロイ
+  `main`へのpush（マージ）をトリガーに、GitHub Actions上で`vercel build`を実行し、ビルド済みの成果物を`vercel deploy --prebuilt --prod`でデプロイしています。  
+  ビルドに失敗した場合はVercelへ何も送られないため、本番サイトに影響を与えません。
+
+### 二重デプロイの防止
+  VercelのGit連携による自動デプロイは`vercel.json`の`git.deploymentEnabled: false`で停止し、デプロイの経路をGitHub Actionsに一本化しました。
+
+### 環境変数の管理
+  microCMSのAPIキーなどビルドに必要な環境変数はVercel側でのみ管理し、ワークフローでは`vercel pull`で取得しています。  
+  GitHubのSecretsにはVercelとの接続に必要な値だけを登録し、同じ値を複数箇所で管理しないようにしました。
+
 ## ディレクトリ構成
 
 ```
 ├── .env                ... 環境定数
+├── .github/workflows/  ... GitHub Actions（本番デプロイ）
 ├── public/             ... 静的ファイル
 ├── src/
 │   ├── app/            ... App Router（ページ・レイアウト・ルーティング）
@@ -86,6 +103,7 @@ microCMSへのアクセスを`src/lib/microcms.ts`に集約し、ページコン
 │   ├── types/          ... 型定義
 │   ├── utils/          ... ユーティリティ関数
 │   └── middleware.ts   ... Basic認証
+└── vercel.json         ... Vercel設定（Git連携の自動デプロイ停止）
 ```
 
 ## スクリプト
