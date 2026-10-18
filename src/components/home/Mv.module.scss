@@ -145,13 +145,14 @@
           margin: 0 0 rem(-24) rem(40);
         }
         span {
-          writing-mode: vertical-rl;
-          background-color: #fff;
           padding: rem(15) rem(2);
           font-size: clamp(rem(14), vwcalc(25), rem(25));
           line-height: 1;
           letter-spacing: 0.44em;
           font-weight: 700;
+          background-color: #fff;
+          writing-mode: vertical-rl;
+          white-space: nowrap;
           @include mq {
             font-size: rem(25);
           }
