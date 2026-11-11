@@ -20,6 +20,7 @@ import styles from './Header.module.scss';
 
 export default function Header() {
   const pathname = usePathname();
+  const isHome = pathname === '/' || pathname === '/index';
   const [menuOpen, setMenuOpen] = useState(false);
   const prevPathnameRef = useRef(pathname);
   const headerRef = useRef<HTMLElement>(null);
@@ -73,7 +74,7 @@ export default function Header() {
     >
       <div id="backdrop" aria-hidden={!menuOpen} onClick={closeMenu}></div>
       <div className={styles.inner}>
-        {pathname !== '/' && (
+        {!isHome && (
           <Link href="/" className={styles.logo}>
             <Image
               src={logo}
